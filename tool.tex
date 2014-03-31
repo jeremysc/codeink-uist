@@ -1,0 +1,50 @@
+\section{CodeInk: an algorithm animation tool}
+
+
+% CodeInk:
+%- Objective: enable teachers and students to explain algorithms by directly
+% manipulating data structures.
+%- Scope: traces and visual problems
+%- Usage model through example
+%- Use cases
+
+%The primary contribution of this paper is a direct manipulation language
+%for explaining algorithms. To realize and evaluate this language, we
+%implemented a prototype tool called CodeInk, which serves as our
+%%details of our language.
+
+CodeInk (\fig{fig:codeink-intro}) is a Web-based algorithm animation tool that
+enables instructors and students to explain algorithms by directly manipulating
+data structures. It implements the direct manipulation language we present in the
+next section, enabling us to evaluate the language's usability and benefits.
+CodeInk's design is motivated by the common convention of teaching and learning
+algorithms with worked examples~\cite{Sweller1985} -- step-by-step
+demonstrations of how to solve a problem on concrete examples.
+\fig{fig:6006-insertion}, for instance, shows how instructors often explain
+insertion sort in an introductory algorithms class: they trace the algorithm's
+steps on a concrete list rather than, say, analyze abstract pseudocode.
+Due to the limitations of the blackboard, the instructor is forced to show
+element swaps by redrawing the list in each stage of the sort.
+
+CodeInk eliminates the tedium of drawing such storyboard diagrams, making it possible to
+manipulate the data structure directly. Its basic usage model is:
+
+\begin{enumerate}
+
+\item Set up a concrete example of a data structure (list, binary tree,
+graph) by dragging constituent objects onto the canvas and
+initializing their values.
+
+\item Directly manipulate the data structure using gestures to
+demonstrate an algorithm's trace on that data.
+
+\item Every interaction adds a step to the trace, translated into Python
+code (\fig{fig:codeink-intro}c). Click on any step to jump to the
+corresponding point in the trace, or play back the trace using the
+controls in \fig{fig:codeink-intro}b.
+
+\item Share the explanation online by generating a URL, embedding into a
+Web page, or exporting as a video.
+
+\end{enumerate}
+
