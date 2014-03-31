@@ -1,0 +1,168 @@
+
+%% CodeInk, VL/HCC 2014 Paper Submission
+%% 2014/02/01
+
+
+\documentclass{sigchi}
+
+% Use this command to override the default ACM copyright statement (e.g. for preprints). 
+% Consult the conference website for the camera-ready copyright statement.
+
+
+%% EXAMPLE BEGIN -- HOW TO OVERRIDE THE DEFAULT COPYRIGHT STRIP -- (July 22, 2013 - Paul Baumann)
+% \toappear{Permission to make digital or hard copies of all or part of this work for personal or classroom use is 	granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components of this work owned by others than ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee. Request permissions from permissions@acm.org. \\
+% {\emph{CHI'14}}, April 26--May 1, 2014, Toronto, Canada. \\
+% Copyright \copyright~2014 ACM ISBN/14/04...\$15.00. \\
+% DOI string from ACM form confirmation}
+%% EXAMPLE END -- HOW TO OVERRIDE THE DEFAULT COPYRIGHT STRIP -- (July 22, 2013 - Paul Baumann)
+
+
+% Arabic page numbers for submission. 
+% Remove this line to eliminate page numbers for the camera ready copy
+\pagenumbering{arabic}
+
+
+% Load basic packages
+\usepackage{balance}  % to better equalize the last page
+\usepackage{graphics} % for EPS, load graphicx instead
+\graphicspath{{img/}}
+% and their extensions so you won't have to specify these with
+% every instance of \includegraphics
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\usepackage{times}    % comment if you want LaTeX's default font
+\usepackage{url}      % llt: nicely formatted URLs
+
+% llt: Define a global style for URLs, rather that the default one
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\bf\ttfamily}}}
+\makeatother
+\urlstyle{leo}
+
+
+% To make various LaTeX processors do the right thing with page size.
+\def\pprw{8.5in}
+\def\pprh{11in}
+\special{papersize=\pprw,\pprh}
+\setlength{\paperwidth}{\pprw}
+\setlength{\paperheight}{\pprh}
+\setlength{\pdfpagewidth}{\pprw}
+\setlength{\pdfpageheight}{\pprh}
+
+% Make sure hyperref comes last of your loaded packages, 
+% to give it a fighting chance of not being over-written, 
+% since its job is to redefine many LaTeX commands.
+\usepackage[pdftex]{hyperref}
+\hypersetup{
+pdftitle={SIGCHI Conference Proceedings Format},
+pdfauthor={LaTeX},
+pdfkeywords={SIGCHI, proceedings, archival format},
+bookmarksnumbered,
+pdfstartview={FitH},
+colorlinks,
+citecolor=black,
+filecolor=black,
+linkcolor=black,
+urlcolor=black,
+breaklinks=true,
+}
+
+% create a shortcut to typeset table headings
+\newcommand\tabhead[1]{\small\textbf{#1}}
+
+
+% Consistent cross referencing
+\def\sec#1{Section~\ref{#1}}
+\def\fig#1{Figure~\ref{#1}}
+\def\tab#1{Table~\ref{#1}}
+\def\eqn#1{Equation~\ref{#1}}
+
+\begin{document}
+\title{CodeInk: Explaining Algorithms \\ with Direct Manipulation}
+
+\numberofauthors{3}
+\author{
+  \alignauthor Jeremy Scott\\
+    \affaddr{MIT CSAIL}\\
+    \affaddr{Cambridge, MA 02139}\\
+    \email{jscott@csail.mit.edu}
+  \alignauthor Philip J. Guo\\
+    \affaddr{MIT CSAIL / University of Rochester}\\
+    \affaddr{Cambridge, MA 02139}\\
+    \email{pg@cs.rochester.edu}
+  \alignauthor Randall Davis\\
+    \affaddr{MIT CSAIL}\\
+    \affaddr{Cambridge, MA 02139}\\
+    \email{davis@csail.mit.edu}
+}
+
+\maketitle
+
+
+\input{abstract}
+
+\keywords{
+	Guides; instructions; author's kit; conference publications;
+	keywords should be separated by a semi-colon.
+	\textcolor{red}{Mandatory section to be included in your final version.}
+}
+
+\category{H.5.m.}{Information Interfaces and Presentation (e.g. HCI)}{Miscellaneous}
+
+See: \url{http://www.acm.org/about/class/1998/}
+for more information and the full list of ACM classifiers
+and descriptors. 
+\textcolor{red}{Mandatory section to be included in your
+final version. On the submission page only the classifiers'
+letter-number combination will need to be entered.}
+
+\input{intro}
+\input{related}
+\input{tool}
+\input{language}
+\input{educational-use-cases}
+\input{evaluation}
+\input{design-space}
+\input{conclusion}
+
+% use section* for acknowledgement
+
+%\section*{Acknowledgments} The authors would like to thank Rob Miller,
+%Tom Lieber, Juho Kim, Carrie Cai, Elena Glassman, the UID group at MIT
+%CSAIL and all our study participants for their feedback. This work was
+%funded in part by Quanta Computer and NSF. \todo{put the exact grant
+%number from the COUHES form}
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+\bibliography{codeinkVLHCC}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+%\begin{thebibliography}{1}
+%
+%\bibitem{IEEEhowto:kopka}
+%H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+%
+%\end{thebibliography}
+
+
+% that's all folks
+\end{document}

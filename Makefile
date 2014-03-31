@@ -1,8 +1,8 @@
 all:
-	pdflatex codeinkVLHCC.tex
+	pdflatex codeinkUIST.tex
 
 bib:
-	pdflatex codeinkVLHCC.tex
-	bibtex codeinkVLHCC
-	pdflatex codeinkVLHCC.tex
-	pdflatex codeinkVLHCC.tex
+	pdflatex codeinkUIST.tex
+	bibtex codeinkUIST
+	pdflatex codeinkUIST.tex
+	pdflatex codeinkUIST.tex
