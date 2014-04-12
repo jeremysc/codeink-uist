@@ -1,35 +1,42 @@
 \section{Related Work}
 
-Our work is related to research in algorithm visualization tools,
-program visualization tools, visual programming languages, and programming by
-example.
+Our work is related to research in algorithm visualizations, program
+visualization tools, direct manipulation interfaces, and visual
+programming languages.
 
-Algorithm visualization tools enable the user to enter their own input data,
-single-step through the execution of an algorithm, and see its visual state at
-each step. But the barrier to creating such visualizations is high, since each
-must be hand-coded using GUI libraries. Shaffer et al.\ surveyed CS instructors
-and found that while there was high interest in these visualizations, few
-actually used them in practice due to the difficulty of finding and integrating
-suitable visualizations into their curriculum~\cite{Shaffer2011}. In response,
-Shaffer et al.\ created the AlgoViz Portal~\cite{AlgoViz}, a website that
-catalogues and ranks hundreds of existing visualizations. CodeInk takes a
-complementary approach by lowering the barrier to creating algorithm
-visualizations. Instructors can easily create their own rather than needing to
-find and integrate ones written by others.
+Algorithm visualizations enable the user to enter their own input data,
+single-step through the execution of an algorithm, and see its visual
+state at each step. The barrier to creating such visualizations is high,
+since each one must be hand-coded using a programming language and its
+GUI libraries. Shaffer et al.\ surveyed CS instructors and found that
+while there was high interest in these visualizations, few actually used
+them in practice due to the difficulty of finding and integrating
+suitable visualizations into their curriculum~\cite{Shaffer2011}. In
+response, Shaffer et al.\ created the AlgoViz Portal~\cite{AlgoViz}, a
+website that catalogues and ranks hundreds of existing visualizations.
+CodeInk takes a complementary approach by lowering the barrier to
+creating algorithm visualizations. No code needs to be written to create
+visualizations with CodeInk.
 
-% hundhausen -- active engagement with vis is important
+Code-driven program visualization tools enable the user to enter a small
+program, single-step through its execution, and see its visual state at
+each step. Sorva et al.\ provide a comprehensive survey of 44 such tools
+for languages such as Java, C++, and Python~\cite{Sorva2013}. In
+contrast to algorithm visualization, these tools visualize the low-level
+semantics of a specific programming language using constructs such as
+stack frames and pointers. CodeInk operates at a higher level of
+abstraction by providing a direct manipulation gesture set for tracing
+algorithms on data structures.
 
-Program visualization tools enable the user to enter a small program,
-single-step through its execution, and see its visual state at each step. Sorva
-et al.\ provide a comprehensive survey of 44 such tools for
-languages such as Java, C++, and Python~\cite{Sorva2013}. In contrast to algorithm visualization, these tools
-visualize the low-level semantics of a specific programming language using
-constructs such as stack frames and pointers. CodeInk operates at a higher level
-of abstraction by providing a visual language for data structures and a DM
-language for describing algorithms.
-
-%\todo{what about CodeInk backend using OPT to generate code?}
-%\cite{Guo2013}
+Direct manipulation (DM) user interfaces~\cite{Hutchins1985} have a long
+history in HCI research. Starting with seminal work such as Sutherland's
+Sketchpad~\cite{Sutherland1963}, researchers have been making DM
+interfaces for programming for the past fifty years. In particular,
+programming by demonstration~\cite{Cypher1993} lets the user construct
+domain-specific programs by demonstrating steps using a direct
+manipulation UI. CodeInk takes inspiration from these systems and allows
+educators to trace algorithms by demonstration rather than by writing
+code.
 
 Visual programming languages enable programmers to write programs via
 direct manipulation of graphical elements rather than by typing text. These
@@ -39,10 +46,11 @@ systems designers and Max/MSP for digital music creators, and (2) educational
 programming environments such as Alice~\cite{Alice2008} and
 Scratch~\cite{Scratch2008}, which allow novices to create simple programs by
 snapping together colorful blocks. CodeInk is also an educational tool, but its
-focus is on algorithms rather than basic programming concepts.
+focus is on algorithms rather than on introductory programming concepts.
 % Furthermore, CodeInk's DM language enables descriptions of an algorithm's
 % trace, and is not yet a general programming language.
 
+\begin{comment}
 Programming by example~\cite{Lieberman2001} enables the user to write programs by
 providing example input-output pairs. A related technique, programming by
 demonstration~\cite{Cypher1993}, lets the user demonstrate individual steps
@@ -54,6 +62,4 @@ unknown inputs~\cite{Yessenov2013, Kandel2011}.
 CodeInk takes inspiration from these tools and allows the user to explain
 algorithms by demonstration, rather than by writing code. CodeInk does not yet
 provide generalization capabilities; we plan to add that in future work.
-
-%(see \sec{sec:design-and-future-work}).
-
+\end{comment}
