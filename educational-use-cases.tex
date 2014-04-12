@@ -1,24 +1,22 @@
 \section{Design Rationale: Educational use cases}
 
-We envision CodeInk being used by instructors and students in
-educational settings, particularly as part of online curricula in, say,
-MOOCs. Thus, we have designed CodeInk to support certain best practices
-from the educational psychology literature, including concrete traces,
-worked examples, targeted feedback and instructional scaffolding.
+Since CodeInk targets instructors and students in an educational
+setting, we have designed it to support best practices from educational
+psychology: concrete tracing, worked examples, targeted feedback, and
+instructional scaffolding.
 
-Novices often need to see many examples of concrete traces before being able to
-understand how an algorithm works in the most general case~\cite{Detienne90}. An
-instructor can use CodeInk instead of a blackboard, PowerPoint, or a digital
-drawing application to record concrete traces of an algorithm running on example
-data structures.
-
+Novices often need to see many instances of concrete traces on example
+data before they can begin to understand how any algorithm works in the
+most general case~\cite{Vainio2007}. An instructor can use
+CodeInk instead of a blackboard, PowerPoint, or digital drawing
+application to record concrete algorithm traces.
 
 Worked examples~\cite{Sweller1985} are step-by-step demonstrations of
 how to solve a particular problem. According to cognitive load theory,
 novices can learn better by studying how experts solve problems that
 would be too difficult for novices to solve on their
-own~\cite{Linn1992}. CodeInk makes it easier to create worked examples
-to explain algorithms at a conceptual level.
+own~\cite{Linn1992}. CodeInk allows instructors to easily create worked
+examples that explain algorithmic concepts.
 
 Students learn best when they are given targeted feedback that is
 as specific as possible to the task at hand~\cite{Balzer1989}. Using
@@ -29,32 +27,31 @@ answer was correct, but also the full history of how the student went
 about solving the problem. Thus, they can give targeted feedback on the
 student's line of thinking rather than just on the final answer.
 
-Finally, students eventually need to learn to write algorithms in a programming
-language. CodeInk provides a mapping from visual data structure changes to lines
-of Python code. This serves as a form of instructional
-scaffolding~\cite{Pea2004} to help students acquire programming skills.
+Finally, students eventually need to learn to write algorithms in a real
+programming language. CodeInk provides a mapping from visual data
+structure changes to lines of Python code. This serves as a form of
+instructional scaffolding~\cite{Pea2004} to help students acquire
+basic programming skills.
 
-%Worked examples are most effective when students attempt to explain the
-%solution to themselves (i.e.,
-%\emph{self-explanation}~\cite{Sandoval95}), but researchers have found
-%that beginners are often not inclined to perform
-%self-explanations~\cite{Chi1989}.
+\begin{comment}
 
+CodeInk supports three main educational use cases:
 
-CodeInk has three potential benefits for CS education:
-
-\begin{itemize}\itemsep2pt
+\begin{itemize}\itemsep0pt
 
 \item Instructors can easily create algorithm explanations that can be
-used in class or disseminated online.
+used in a live class or disseminated online.
 
 \item Students can step through instructor-created explanations to learn
 both the algorithms and basic Python constructs, such as list
 manipulation operators.
 
-\item Students can solidify their understanding by tracing an algorithm on new
-input data. CodeInk records all user interactions, which enables instructors to
-give targeted feedback~\cite{Balzer1989} on the student's problem-solving
-process.
+\item Students can solidify their understanding by tracing an algorithm
+on new input data. CodeInk records all user interactions, which enables
+instructors to give targeted feedback~\cite{Balzer1989} on the student's
+problem-solving process.
 
 \end{itemize}
+
+\end{comment}
+
