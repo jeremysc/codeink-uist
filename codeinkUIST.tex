@@ -1,6 +1,6 @@
 
-%% CodeInk, VL/HCC 2014 Paper Submission
-%% 2014/02/01
+%% CodeInk, UIST 2014 Paper Submission
+%% 2014/04/01
 
 
 \documentclass{sigchi}
@@ -38,6 +38,8 @@
   \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\bf\ttfamily}}}
 \makeatother
 \urlstyle{leo}
+
+\usepackage{array}
 
 
 % To make various LaTeX processors do the right thing with page size.
@@ -102,25 +104,25 @@ breaklinks=true,
 \input{abstract}
 
 \keywords{
-	Guides; instructions; author's kit; conference publications;
-	keywords should be separated by a semi-colon.
-	\textcolor{red}{Mandatory section to be included in your final version.}
+	Guides; instructions; author's kit; conference publications.
+	%keywords should be separated by a semi-colon.
+	%\textcolor{red}{Mandatory section to be included in your final version.}
 }
 
 \category{H.5.m.}{Information Interfaces and Presentation (e.g. HCI)}{Miscellaneous}
 
-See: \url{http://www.acm.org/about/class/1998/}
-for more information and the full list of ACM classifiers
-and descriptors. 
-\textcolor{red}{Mandatory section to be included in your
-final version. On the submission page only the classifiers'
-letter-number combination will need to be entered.}
+%See: \url{http://www.acm.org/about/class/1998/}
+%for more information and the full list of ACM classifiers
+%and descriptors. 
+%\textcolor{red}{Mandatory section to be included in your
+%final version. On the submission page only the classifiers'
+%letter-number combination will need to be entered.}
 
 \input{intro}
 \input{related}
+\input{educational-use-cases}
 \input{tool}
 \input{language}
-\input{educational-use-cases}
 \input{evaluation}
 \input{design-space}
 \input{conclusion}
@@ -150,7 +152,7 @@ letter-number combination will need to be entered.}
 % http://www.michaelshell.org/tex/ieeetran/bibtex/
 \bibliographystyle{IEEEtran}
 % argument is your BibTeX string definitions and bibliography database(s)
-\bibliography{codeinkVLHCC}
+\bibliography{codeinkUIST}
 %
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references

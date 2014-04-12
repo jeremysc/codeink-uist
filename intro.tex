@@ -1,29 +1,24 @@
 \section{Introduction}
 
-Explaining the operation of algorithms is a fundamental part of teaching
-computer science. Instructors of courses such as introductory CS, data structures, algorithms,
-and compilers often explain algorithms by sketching diagrams on the
-blackboard or in PowerPoint slides~\cite{Orsega2012}. With the recent growth of
-Massive Open Online Courses (MOOCs), millions of students around the world now
-watch online lecture videos where instructors draw and explain these diagrams
-(see \fig{fig:6006-insertion}).
+%Tracing algorithms is ubiquitous, fundamental
+Tracing algorithms on examples is fundamental to how teachers and students in
+computer science explain and learn. On the blackboard, teachers explain an
+algorithm for the first time by drawing an example data structure and carrying
+out the algorithm's operation on the example. Similarly, before diving into
+coding and problem sets, students review algorithms by reading pseudocode and
+tracing through multiple examples on paper.
+% mentally tracing the algorithm's behavior
 
-Instructors find it tedious and error-prone~\cite{Ross1991} to draw diagrams on
-the blackboard or create animations in PowerPoint. One alternative is to use a
-programming language with GUI libraries to hand-code algorithm
-animations~\cite{Shaffer2011}. These animations are interactive, but they take
-even longer to create, since instructors must write code rather than directly
-drawing.
-
-Another limitation of drawn or PowerPoint diagrams is that they simply consist
-of geometric shapes on a canvas, without any programming-specific affordances or
-constraints. Thus, students cannot interact with the instructor's demonstrations
-to ground their understanding in actual code, or practice tracing the algorithm
-themselves on different input data.
-% may need to add a connecting sentence here about dead shapes being bad for
-% teachers, before discussing possible improvements for students.
-% when watching an instructor demonstrate an algorithm, either in-person or on
-% video.
+% Tedious, limiting no manipulation affordances no persistent, structured
+% recording
+This process of tracing algorithms on blackboards and paper can be tedious and
+limiting. First, blackboards and paper do not afford manipulation of the
+drawing: in order to demonstrate changes, the user must erase, redraw, and
+storyboard the behavior as a series of snapshots.
+Second, the drawing is not recorded in a persistent, structured format, so it
+can be difficult for students and teachers to share ideas and discuss problems.
+This is particularly problematic in a MOOC context, where the majority of
+students do not have access to teaching staff.
 
 \begin{figure}
 
@@ -39,7 +34,7 @@ manipulation language for tracing algorithms on data structures for the
 purpose of CS education. CodeInk allows the user to (a) compose and
 manipulate data structures on a graphical canvas, (b) step forward and
 backward through the recorded trace, and (c) see each step translated
-into a line of Python code.}
+into a line of Python code or an English explanation.}
 
 %The CodeInk user interface is (a) a canvas for composing and
 %manipulating data structures and (c) an interactive list of Python steps
@@ -50,62 +45,60 @@ into a line of Python code.}
 \label{fig:codeink-intro}
 \end{figure}
 
-To help overcome these limitations, we have developed, to our knowledge, the
-first direct manipulation (DM) language for tracing the operation of algorithms
-on example data structures. Specifically, the language provides a mapping from
-gestures to programmatic steps on lists, binary trees, and graphs. It enables
-users to trace the behavior of algorithms commonly taught in CS courses.
-However, it does not yet support general iteration or conditional branching, so
-it can record only concrete traces.
-% at a level suitable: good way to explain that the language is about traces,
-% but just comes across as ambiguous/confusing
+% Code-driven visualization is for visualization, not explanation or active
+% learning Also at the wrong level of abstraction
+Code-driven visualization offers an alternative to tracing-by-drawing, where the
+user can input an algorithm's code and watch an animation of its execution.
+However, watching visualizations is a passive learning process, where tracing
+requires the student to play the role of the computer and actively carry out the
+algorithm's behavior. Moreover, an algorithm's code is usually at a lower level
+of abstraction (language and implementation specific) than the one at which the
+algorithm should be explained and learned (language and implementation
+agnostic).
 
-We have also built CodeInk, a Web-based algorithm animation tool that implements
-our DM language. CodeInk allows users to demonstrate an algorithm's trace on an
-example by directly manipulating a visual data structure that has
-programming-specific affordances and constraints. For example, an instructor can
-explain merge sort by dragging an example list onto the canvas, selecting
-sublists with a rectangular selection, dragging them away to create copies, then
-merging elements by dragging them into a new sorted list
-(\fig{fig:codeink-intro}a). Every interaction is interpreted as a step in Python
-(\fig{fig:codeink-intro}c); viewers can step forward and backward through the
-resulting trace (\fig{fig:codeink-intro}b).
+We present CodeInk, a CS education tool designed to reduce the tedium and
+enhance the experience of tracing algorithms. Using a direct manipulation (DM)
+gesture set, users can demonstrate changes to data structures, rather than draw
+before and after snapshots. The trace is recorded as an interactive set of
+program steps, where each gesture is translated to a line of Python code or
+explanatory English. The steps provide several benefits: feedback on user
+interactions, navigation through the trace, and a persistent, structured format
+that can be easily disseminated and analyzed as a basis for discussion.
 
-CodeInk has three potential benefits for CS education:
+For example, an instructor can explain merge sort by dragging an example list
+onto the canvas, selecting sublists with a rectangular selection, dragging them
+away to create copies, then merging elements by dragging them into a new sorted
+list (\fig{fig:codeink-intro}a). Every interaction is interpreted as a step in
+Python (\fig{fig:codeink-intro}c). The trace can then be shared with students,
+who can navigate through the explanation by clicking on steps
+(\fig{fig:codeink-intro}b), and then trace the algorithm for themselves on a new
+example. Their own trace can be shared with teachers as a basis for feedback on
+not just the final output, but also the process by which the list was sorted.
 
-\begin{itemize}\itemsep2pt
+%We have built CodeInk, a system that enables teachers and students to trace an
+%algorithm's behavior by directly manipulating visual objects on a stage. The
+%objects represent data structures as they are typically drawn (lists, trees,
+%graphs) and can be manipulated using a set of DM gestures to demonstrate
+%concrete changes to values and pointer assignments. CodeInk translates all
+%interactions into a list of steps, which can be used to navigate through the
+%algorithm's trace. In the case where a student is tracing the algorithm's
+%behavior, the steps capture their understanding in a structured format, making
+%the demonstration analyzable where screencasts, and audio/video recordings are
+%not.
 
-\item Instructors can easily create algorithm explanations that can be
-used in class or disseminated online.
-
-\item Students can step through instructor-created explanations to learn
-both the algorithms and basic Python constructs, such as list
-manipulation operators.
-
-\item Students can solidify their understanding by tracing an algorithm on new
-input data. CodeInk records all user interactions, which enables instructors to
-give targeted feedback~\cite{Balzer1989} on the student's problem-solving
-process.
-
-\end{itemize}
-
-%We evaluated CodeInk on \todo{N} teaching assistants and \todo{M}
-%students in a Python-based introductory CS course at MIT.
-
-In this paper, we:% makes three main contributions:
+This paper makes the following primary contributions:
 
 \begin{enumerate} %\itemsep1pt
 
-\item describe, to our knowledge, the first direct manipulation language
-for tracing algorithms on example data structures,
-
-\item describe CodeInk, a prototype algorithm animation tool that
-implements our language,
-
-\item and report on an empirical evaluation of CodeInk and its DM
-language on students and teaching assistants in introductory CS classes.
-% and discussion of the \textbf{design space} of direct manipulation languages
-% for education.
+\item CodeInk: a CS education tool that enhances the experience of tracing
+algorithms on example data structures.
+\item A direct manipulation (DM) gesture set for demonstrating changes to list,
+tree and graph data structures, where each gesture maps onto a line of Python
+code.
+\item An evaluation of CodeInk's usability and viability in a controlled study,
+where students watched CodeInk-produced traces to learn an algorithm, then used
+CodeInk to trace the algorithm for themselves to solidify their
+understanding.
 
 \end{enumerate}
 

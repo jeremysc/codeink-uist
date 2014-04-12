@@ -1,28 +1,48 @@
 \begin{abstract}
 
-Explaining algorithms is a fundamental part of teaching computer
-science, but instructors find it tedious to draw diagrams on
-the board or in software such as PowerPoint. The shapes in such diagrams
-have no programming-specific affordances or constraints, so they
-provide no scaffolding for students to translate between diagrams and
-code.
-%
-In response, we developed a
-direct manipulation (DM) language for explaining algorithms and built a tool
-called CodeInk that implements this language. Our DM language maps gestures onto
-primitive program behaviors that occur in commonly taught algorithms.
-CodeInk enables teachers and students to trace an
-algorithm step-by-step by directly manipulating an example data structure.
-Every interaction step is recorded as a line of Python code.
-This paper describes CodeInk and the design of its DM language.
-It also presents a comparative
-study of CodeInk on 9 students and 4 teaching assistants from introductory computer
-science classes. Subjects found CodeInk easier to use and more helpful than a
-standard drawing application for explaining list sorting algorithms.
+% 1-2 sentences: motivation
+Tracing algorithms on examples is fundamental to how teachers explain and how
+students learn an algorithm's behavior; on blackboards and paper, they draw an
+example data structure and a storyboard of how it is transformed by the
+algorithm. Unfortunately, drawing in this way can be tedious and limiting
+because the data structures can only be erased and redrawn, and the trace cannot
+be easily shared or discussed.
+% 1 sentence: hypothesis / general idea
+We present CodeInk, a novel CS education tool that enhances the experience of
+tracing algorithms by enabling users to directly manipulate data structures and
+record the trace as a set of program steps.
+% 1 sentence: how things work / how the contributions were achieved
+The system's DM gesture set enables the user to demonstrate the algorithm as a
+process, instead of drawing snapshots of its effects.
+In response, the system translates all interactions into a set of Python or
+English-explanation steps, which enable navigation through the trace and can be
+shared or analyzed as a basis for feedback from teachers to students.
+% 1-2 sentences: evaluation results 1 sentence: this paper describes,
+% contributions
+To evaluate CodeInk's viability as an educational tool, we performed a
+controlled experiment in which students from an undergraduate programming class
+were asked to learn list sorting algorithms from CodeInk-produced traces, then
+trace the algorithms for themselves on new example lists.
 
-%1-2 sentences: motivation
-%1 sentence: hypothesis / general idea
-%1 sentence: how things work / how the contributions were achieved
-%1-2 sentences: evaluation results
-%1 sentence: this paper describes, contributions
+
+%Explaining algorithms is a fundamental part of teaching computer
+%science, but instructors find it tedious to draw diagrams on
+%the board or in software such as PowerPoint. The shapes in such diagrams
+%have no programming-specific affordances or constraints, so they
+%provide no scaffolding for students to translate between diagrams and
+%code.
+%
+%In response, we developed a
+%direct manipulation (DM) language for explaining algorithms and built a tool
+%called CodeInk that implements this language. Our DM language maps gestures
+% onto primitive program behaviors that occur in commonly taught algorithms.
+%CodeInk enables teachers and students to trace an
+%algorithm step-by-step by directly manipulating an example data structure.
+%Every interaction step is recorded as a line of Python code.
+%This paper describes CodeInk and the design of its DM language.
+%It also presents a comparative
+%study of CodeInk on 9 students and 4 teaching assistants from introductory
+% computer science classes. Subjects found CodeInk easier to use and more helpful than a
+%standard drawing application for explaining list sorting algorithms.
+
 \end{abstract}
