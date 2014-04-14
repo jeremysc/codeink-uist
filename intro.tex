@@ -12,15 +12,15 @@ tracing through multiple examples on paper~\cite{Vainio2007}.
 
 % Tedious, limiting no manipulation affordances no persistent, structured
 % recording
-This process of tracing algorithms on blackboards and paper can be both tedious and
-limiting. First, blackboards and paper do not afford manipulation of the
-drawing. To demonstrate changes, the user must erase, redraw, and
-storyboard the behavior as a series of static snapshots.
-Second, the drawing is not recorded in a persistent, structured format, so it
-can be hard for students and teachers to share ideas and discuss
-problems unless they are co-located.
-This limitation is particularly problematic in a MOOC context, where the majority of
-students do not have direct, real-time access to teaching staff.
+This process of tracing algorithms on blackboards and paper can be both tedious
+and limiting. First, blackboards and paper do not afford manipulation of the
+drawing. To demonstrate changes, the user must erase, redraw, and storyboard the
+behavior as a series of static snapshots.
+Second, the drawing process is not recorded in a persistent, structured format,
+so it can be hard for students and teachers to share ideas and discuss problems
+unless they are co-located.
+This limitation is particularly problematic in a MOOC context, where the
+majority of students do not have direct access to teaching staff.
 
 \begin{figure}
 
@@ -45,17 +45,17 @@ into a line of Python code or an English explanation.}
 \label{fig:codeink-intro}
 \end{figure}
 
-% Code-driven visualization is for visualization, not explanation or
-% active learning Also at the wrong level of abstraction
-Code-driven program visualizations~\cite{Sorva2013} are an alternative
-to manually drawing traces on blackboards or paper. Using a program
-visualization tool, the user can type in code that implements an
-algorithm and then watch a step-by-step animation of its execution.
-However, the implementation of an algorithm is usually at a lower
-level of abstraction than the language-agnostic level at which the
-algorithm should be explained and learned. Also, watching a
-visualization is passive learning, whereas tracing requires the student
-to play the role of the computer and carry out the algorithm's behavior.
+% Code-driven visualization is for visualization, not explanation or active
+% learning Also at the wrong level of abstraction
+Code-driven program visualizations~\cite{Guo2013, Sorva2013} are an alternative
+to manually drawing traces on blackboards or paper. Using such a tool, the user
+can enter code that implements an algorithm and then watch a step-by-step
+animation of its execution.
+However, the implementation of an algorithm is usually at a lower level of
+abstraction than the language-agnostic level at which the algorithm should be
+explained and learned. Also, watching a visualization is passive learning,
+whereas tracing requires the student to play the role of the computer and carry
+out the algorithm's behavior.
 This form of active learning has been shown to result in better learning
 outcomes~\cite{Sorva2012Diss}.
 
@@ -65,42 +65,41 @@ algorithms should support exploration by tracing, and enhance the experience by
 (b) recording the trace in a structured, persistent format that affords
 dissemination, interaction and discussion.
 
-This paper presents a novel direct manipulation (DM) gesture set for tracing
-algorithms that enables users to demonstrate changes to data structures rather
-than tediously drawing before-and-after snapshots. We have implemented this
-gesture set in a prototype Web-based tool called CodeInk. When the user directly
-manipulates data structures in CodeInk, a trace is recorded as a set of
-interactive program steps, where each gesture is translated to a line of Python
-code or explanatory English. The steps provide three main benefits: feedback on
-user interactions, navigation through the trace, and a format that can be easily
-disseminated and analyzed as a basis for discussion.
+To explore this hypotheiss, we built \emph{CodeInk}, a Web-based tool for
+tracing algorithms by direct manipulation. It includes a novel direct
+manipulation (DM) gesture set that enables users to transform lists, trees and
+graphs rather than tediously draw before-and-after snapshots. In CodeInk, when
+the user manipulates data structures, a trace is recorded as interactive program
+steps, where each gesture is translated to a line of Python code or explanatory
+English. The steps provide three main benefits: feedback on user interactions,
+navigation through the trace, and a format that can be easily disseminated and
+analyzed as a basis for discussion.
 
-\fig{fig:codeink-intro} shows how an instructor can explain the merge
-sort algorithm by dragging an example list onto the canvas, selecting
-sublists with a rectangular selection, dragging them away to create
-copies, then merging elements by dragging them into a new sorted list
-(\fig{fig:codeink-intro}a). Every interaction is interpreted as a step
-in Python (\fig{fig:codeink-intro}c). The trace can then be shared with
-students, who can navigate through the explanation by clicking on steps
-(\fig{fig:codeink-intro}b), and then trace the algorithm for themselves
-on a new example. Their own trace can be shared with teachers as a basis
-for feedback on not just the final output, but also the process by which
-the list was sorted.
+\fig{fig:codeink-intro} shows how an instructor can explain the merge sort
+algorithm in CodeInk by dragging an example list onto the canvas, selecting
+sublists with a rectangular selection, dragging them away to create copies, then
+merging elements by dragging them into a new sorted list
+(\fig{fig:codeink-intro}a).
+Every interaction is interpreted as a step in Python (\fig{fig:codeink-intro}c).
+The trace can then be shared with students, who can navigate through it by
+single-stepping or clicking on steps (\fig{fig:codeink-intro}b), and then trace
+the algorithm for themselves on a new example. Their own trace can be shared
+with teachers as a basis for feedback on not just the final output, but also the
+process by which the list was sorted.
 
 This paper makes the following primary contributions:
 
-\begin{enumerate} %\itemsep1pt
+\begin{enumerate}
 
-\item A compact and expressive direct manipulation (DM) gesture set for
-demonstrating changes to list, tree and graph data structures.
+\item The design of a direct manipulation (DM) gesture set for tracing algorithm
+behavior on lists, trees and graphs.
 
-\item CodeInk: a CS education tool that implements the DM gesture set to
-enhance the experience of tracing algorithms on example data structures.
+\item CodeInk: a CS education tool for tracing algorithms that implements the DM
+gesture set and records traces as sharable, interactive program steps.
 
-\item An evaluation of CodeInk's viability in a controlled study, where
-students watched CodeInk-produced traces to learn an algorithm, and then
-used CodeInk to trace the algorithm by themselves to solidify their
-understanding.
+\item An evaluation of CodeInk's viability in a controlled study, where students
+watched CodeInk-produced traces to learn an algorithm, and then used CodeInk to
+trace the algorithm on a new example to solidify their understanding.
 
 \end{enumerate}
 
@@ -108,6 +107,5 @@ understanding.
 While our focus is on enhancing algorithm traces in a CS education context, the
 ability to directly manipulate data structures and record those interactions as
 program steps may have broader applicability: for the general programmer, it may
-enable visualization and exploration of an algorithm's design. We conclude this
-paper with a discussion of future work.
-
+enable better visualization and exploration of an algorithm's design. We
+conclude this paper with a discussion of future work.

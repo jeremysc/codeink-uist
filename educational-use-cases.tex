@@ -1,37 +1,121 @@
 \section{Design Rationale: Educational use cases}
 
-Since CodeInk targets instructors and students in an educational
-setting, we have designed it to support best practices from educational
-psychology: concrete tracing, worked examples, targeted feedback, and
-instructional scaffolding.
+Since CodeInk targets instructors and students in CS education, we looked to two
+main sources to guide its design: (1) lecture videos of instructors tracing
+algorithms on blackboards, and (2) best practices from educational psychology.
 
-Novices often need to see many instances of concrete traces on example
-data before they can begin to understand how any algorithm works in the
-most general case~\cite{Vainio2007}. An instructor can use
-CodeInk instead of a blackboard, PowerPoint, or digital drawing
-application to record concrete algorithm traces.
+\begin{figure}[b!]
 
-Worked examples~\cite{Sweller1985} are step-by-step demonstrations of
-how to solve a particular problem. According to cognitive load theory,
-novices can learn better by studying how experts solve problems that
-would be too difficult for novices to solve on their
-own~\cite{Linn1992}. CodeInk allows instructors to easily create worked
-examples that explain algorithmic concepts.
+\begin{center}
+\includegraphics[width=0.7\columnwidth]{img/6006/insertion.png}
+\end{center}
 
-Students learn best when they are given targeted feedback that is
-as specific as possible to the task at hand~\cite{Balzer1989}. Using
-CodeInk, an instructor can set up examples of data structures and then
-prompt students to trace the algorithm themselves. Since CodeInk records
-all steps and undos, the instructor can see not only whether the final
-answer was correct, but also the full history of how the student went
-about solving the problem. Thus, they can give targeted feedback on the
-student's line of thinking rather than just on the final answer.
+\caption{An instructor of MIT's introductory algorithms class draws
+blackboard diagrams to explain insertion sort on an example of a list.}
+\label{fig:6006-insertion}
+\end{figure}
 
-Finally, students eventually need to learn to write algorithms in a real
-programming language. CodeInk provides a mapping from visual data
-structure changes to lines of Python code. This serves as a form of
-instructional scaffolding~\cite{Pea2004} to help students acquire
-basic programming skills.
+
+\subsection{Concrete traces}
+We observed that instructors explain algorithms by drawing a concrete example of
+a data structure - for example, a specific list when explaining insertion sort
+(\fig{fig:6006-insertion}) - and then trace the algorithm's behavior on that
+example. We call this a \emph{concrete trace}, because the instructor does not
+explain the algorithm in general, or draw flow control on the board.
+Instead, they unfold the loops and branches of an algorithm's pseudocode into a
+sequence of concrete steps.
+% other than by referring to pseudocode written elsewhere on the board.
+
+This approach is in line with findings that students need to see multiple
+examples of an algorithm's behavior to build their
+understanding~\cite{Vainio2007}.
+Also, according to cognitive load theory, novices can learn better by watching
+experts solve problems that would be too difficult for novices to solve on their
+own~\cite{Linn1992}. The instructor's worked examples give students an
+opportunity to get the gist of an algorithm, before they attempt to trace it on
+their own. For these reasons, CodeInk targets the teacher's task of describing,
+recording and disseminating concrete traces of algorithms.
+
+\subsection{Level of abstraction}
+The instructor's explanation occurs at a high level of abstraction.
+They rarely write language-specific code on the board (e.g. in Python), and will
+instead opt for a combination of pseudocode and data structure diagrams. We
+hypothesize that this is because the pseudocode and diagrams abstract away
+language-specific details that are not essential to understanding the strategy
+behind the algorithm. This should not be confused with the previous point: the
+traced steps are concrete, and do not include control abstraction (e.g. loops).
+As a result, CodeInk focuses on enabling tracing by direct manipulation of data
+structure diagrams.
+
+\subsection{Visual vocabulary}
+When drawing data structures, instructors use a familiar, consistent visual
+vocabulary:
+lists are drawn as a row of boxes (Fig. \ref{fig:6006-insertion}), and trees and
+graphs are drawn as circles connected by arrows (Fig.
+\ref{fig:6006-bst}, \ref{fig:6006-dijkstra}). To represent its value, each list
+element, node or edge has a number inscribed within or adjacent to it; all
+examples in lecture videos we watched were numerical. We designed CodeInk's
+visual vocabulary to mirror these conventions.
+
+Instructors add to this vocabulary using arrows and colors. Arrows are
+interchangably used to show transitions between storyboard frames, and as
+fingers pointing to the current focus of the algorithm (Fig.
+\ref{fig:6006-insertion}). The former is an artifact of the need to draw
+snapshots when using blackboards, while the latter is an important visual cue
+for students to follow the algorithm's progress. Colors are also used to
+visualize state: when nodes needed to be marked as visited, or list elements as
+sorted, they are filled with a different color. CodeInk's visual vocabulary
+includes \emph{fingers}, which can be attached to any on-screen object, and a
+\emph{fill} gesture (explained later) that can be used to fill an object.
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=0.7\columnwidth]{img/6006/bst.png}
+\end{center}
+
+\caption{An instructor demonstrating AVL (balanced binary search) tree
+inserts.}
+
+\label{fig:6006-bst}
+\end{figure}
+
+\subsection{Student traces and targeted feedback}
+In a multi-national study, Lister et. al~\cite{Lister2004} found that students
+in introductory programming courses could not consistently demonstrate an
+understanding of code by manually tracing it. The researchers noted that ``even
+when our principal aim is to teach students to write code, we require students
+to learn by reading code'', and suggested that tracing code is therefore a
+prerequisite skill for problem sovling and the ability to write programs. They
+further stated that programming courses should ``first teach systematic tracing
+as a base skill, then allow students to build [\ldots] upon that''.
+
+Apart from being an authoring tool for instructors, we see CodeInk as a learning
+environment that enables students to practice the basic skill of tracing
+pseudocode on example data structures. The student has the freedom to explore
+the algorithm's behavior, perhaps making mistakes along the way.
+Realizing the importance of targeted feedback~\cite{Balzer1989}, we designed
+CodeInk to record the student's effort, so a teacher can provide feedback on not
+just the final answer, but also the process by which they reached it.
+% Show your work
+
+%Finally, students eventually need to learn to write algorithms in a real
+%programming language. CodeInk provides a mapping from visual data
+%structure changes to lines of Python code. This serves as a form of
+%instructional scaffolding~\cite{Pea2004} to help students acquire
+%basic programming skills.
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.7\columnwidth]{img/6006/dijkstra.png}
+\end{center}
+
+\caption{An instructor demonstrating Dijkstra's algorithm on the
+blackboard.}
+
+\label{fig:6006-dijkstra}
+\end{figure}
 
 \begin{comment}
 

@@ -1,54 +1,70 @@
 \section{Related Work}
 
-Our work is related to research in algorithm visualizations, program
-visualization tools, direct manipulation interfaces, and visual
-programming languages.
+Our work is related to research in code-driven visualization tools, algorithm
+visualization, visual programming languages, and direct manipulation user
+interfaces.
 
-Interactive algorithm visualizations enable the user to single-step
-through the execution of an algorithm and see its visual state at each
-step. The barrier to creating such visualizations is high, since each
-one must be hand-coded using a programming language and its GUI
-libraries. Shaffer et al.\ surveyed CS instructors and found that while
-there was high interest in these visualizations, few actually used them
-in practice due to the difficulty of finding and integrating suitable
-visualizations into their curriculum~\cite{Shaffer2011}. In response,
-Shaffer et al.\ created the AlgoViz Portal~\cite{AlgoViz}, a website
-that catalogues and ranks hundreds of existing visualizations. CodeInk
-takes a complementary approach by significantly lowering the barrier to
-creating algorithm visualizations. No code needs to be written to create
-visualizations with CodeInk.
+Code-driven visualization tools enable the user to enter a small program,
+single-step through its execution, and see the state of the program at each
+step. These tools are powerful for understanding code, but are not ideal for
+understanding an algorithm's high-level behavior, since the visualizations occur
+at a low level of abstraction: the executed steps are language and
+implementation-specific, and the program state is visualized using stack frames
+and pointers. CodeInk operates at a higher level of abstraction through its
+visual vocabulary of data structures, while its focus on tracing, rather than
+visualization, results in a more active learning process.
 
-Code-driven program visualization tools enable the user to enter a small
-program, single-step through its execution, and see its visual state at
-each step. Sorva et al.\ provide a comprehensive survey of 44 such tools
-for languages such as Java, C++, and Python~\cite{Sorva2013}. In
-contrast to algorithm visualization, these tools visualize the low-level
-semantics of a specific programming language using constructs such as
-stack frames and pointers. CodeInk operates at a higher level of
-abstraction by providing a direct manipulation gesture set for tracing
-algorithms on data structures.
+% Sorva et al.\ provide a comprehensive survey of 44 such tools
+% for languages such as Java, C++, and Python~\cite{Sorva2013}.
 
-Direct manipulation (DM) user interfaces~\cite{Hutchins1985} have a long
-history in HCI research. Starting with seminal work such as Sutherland's
-Sketchpad~\cite{Sutherland1963}, researchers have been making DM
-interfaces for programming for the past fifty years. In particular,
-programming by demonstration~\cite{Cypher1993} lets the user construct
-domain-specific programs by demonstrating steps using a direct
-manipulation UI. CodeInk takes inspiration from these systems and allows
-educators to trace algorithms by demonstration rather than by writing
-code.
+Algorithm visualizations are custom-built animations of an algorithm's behavior
+through which viewers can step backward and forward. The animations are
+typically hand-coded using GUI libraries, meaning they are at the ideal level of
+abstraction for explaining algorithms (diagrams of data structures, fewer
+low-level steps), but are tedious and difficult to author.
+CodeInk lowers the barrier to creating algorithm visualizations (no code needs
+to be written), while enabling students to learn by both watching and
+tracing.
 
-Visual programming languages enable programmers to write programs via
-direct manipulation of graphical elements rather than by typing text. These
-languages have gained widespread adoption in two main areas:
+%To enable teachers to find and integrate suitable
+%visualizations into their curriculula, Shaffer et al.\ created the AlgoViz
+%Portal~\cite{AlgoViz}, a website that catalogues and ranks hundreds of existing
+%visualizations.
+
+%Shaffer et al.\ surveyed CS instructors and found that while there was high interest in these visualizations, 
+% few used them in practice due to the difficulty of finding and integrating
+% suitable visualizations into their curriculum~\cite{Shaffer2011}.
+
+Visual programming languages enable programmers to write programs using
+graphical elements rather than by typing text. These languages have gained
+widespread adoption in two main areas:
 (1) domain-specific languages for specialists, such as LabVIEW for electronic
 systems designers and Max/MSP for digital music creators, and (2) educational
 programming environments such as Alice~\cite{Alice2008} and
 Scratch~\cite{Scratch2008}, which allow novices to create simple programs by
-snapping together colorful blocks. CodeInk is also an educational tool, but its
-focus is on algorithms rather than on introductory programming concepts.
+snapping together colorful blocks. CodeInk's DM gesture set is a type of visual
+language that focuses on traces of algorithms, rather than general
+programs.
 % Furthermore, CodeInk's DM language enables descriptions of an algorithm's
-% trace, and is not yet a general programming language.
+% trace, and is not yet a general qprogramming language.
+
+Direct manipulation (DM) user interfaces~\cite{Hutchins1985}, starting with
+Shneiderman's initial definiton of the term~\cite{Shneiderman1982}, have long
+been recognized to promote more satisfactory reactions among users than
+command-line or WIMP interfaces. CodeInk's DM gesture set was designed with
+these princples in mind: algorithm steps can be described using physical actions
+(grabbing and dragging data structures), lowering the degree of indirection
+between onscreen objects and the abstract data structures they represent. For
+example, list elements can be rearranged by grabbing elements and moving them
+into new positions, rather than by writing code or using menus.
+
+% DM environments for programming by
+%demonstration~\cite{Cypher1993} enable users to construct programs by
+%demonstrating how the program should behave on specific examples, from which
+%% the system refines its understanding of the program. CodeInk's focus is on
+% traces of
+%algorithms, rather than general programs.
+
 
 \begin{comment}
 Programming by example~\cite{Lieberman2001} enables the user to write programs by
