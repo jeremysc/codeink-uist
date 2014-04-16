@@ -14,11 +14,11 @@
 %- Use cases
 
 \section{CodeInk: A system for tracing algorithms}
-CodeInk (\fig{fig:codeink-intro}) is a Web-based system that enables
+CodeInk (\fig{fig:codeink-intro}) enables
 instructors and
 students to trace algorithms by direct manipulation. The system consists of
-three components: (1) a data palette for constructing examples of data
-structures, (2) a DM gesture set for demonstrating changes to the data
+three components: (1) a data palette for constructing data
+structure examples, (2) a DM gesture set for demonstrating changes to the 
 structures, and (3) the recorded trace.
 % which both enables navigation through the trace and can be disseminated or
 % analyzed as a basis for feedback.
@@ -30,18 +30,16 @@ Its usage model is the following:
 graph) by dragging objects from the data palette onto the canvas and
 initializing their values.
 
-\item Directly manipulate the data structure using CodeInk's gesture set
-to trace an algorithm's operation on the example.
+\item  Trace an algorithm's operation on the example by manipulating the data structure using CodeInk's DM gesture set.
 
-\item Every interaction adds a step to the recorded trace, translated into
-Python or an English description (\fig{fig:codeink-intro}c). Click on any step to
+
+\item Every interaction adds to the recorded trace a step described in 
+Python or an English description, (\fig{fig:codeink-intro}c). The user can click on any step to
 jump to the corresponding point in the trace, or play back the trace using the
 controls in \fig{fig:codeink-intro}b.
 
 \item Share the trace by generating a URL, embedding into a Web page, or
-exporting as a video. The trace is machine-readable since it maps to
-Python code, so it could be analyzed automatically to provide feedback
-at scale.
+exporting as a video. As the steps are in Python, the trace is machine-readable, opening up the possibility of automatically generating feedback, even at scale (e.g., for a MOOC).
 
 \end{enumerate}
 

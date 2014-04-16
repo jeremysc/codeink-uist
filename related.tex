@@ -1,16 +1,16 @@
 \section{Related Work}
 
-Code-driven visualization tools~\cite{Guo2013, Sorva2013} enable users to enter
-code that implements an algorithm, and watch a step-by-step animation of its
-execution. While these tools are powerful for understanding code snippets, they
-are not ideal for understanding an algorithm's high-level behavior because the
-input code must be language-specific. On the other hand, algorithm
-visualizations~\cite{AlgoViz} are custom-built animations that operate at the
-proper level of abstraction, but they must be hand-coded for a particular
-algorithm. CodeInk offers an alternative, low-effort method of authoring
-visualizations, and also enables students to play the role of the computer and
-actively trace the algorithm's behavior. Compared to passively viewing visualizations,
-tracing is an example of active learning, which has been shown
+Code-driven visualization tools~\cite{Guo2013, Sorva2013} generate step-by-step animations of code snippet
+execution. While powerful for understanding snippets, they
+are not as good for understanding an algorithm's high-level behavior, because they work at the wrong level of abstraction – i.e., the {\em implementation} of the algorithm in a particular language. Algorithm
+visualizations~\cite{AlgoViz}, by contrast, operate at the
+proper level of abstraction, but must be hand-coded for each 
+algorithm. 
+
+CodeInk offers an alternative, low-effort method of authoring
+visualizations and enables students to learn by playing the role of the computer, 
+actively tracing algorithm behavior. 
+CodeInk is thus an example of active learning, which has been shown
 to result in better pedagogical outcomes~\cite{Sorva2012Diss}.
 
 % Sorva et al.\ provide a comprehensive survey of 44 such tools
@@ -25,17 +25,17 @@ to result in better pedagogical outcomes~\cite{Sorva2012Diss}.
 % few used them in practice due to the difficulty of finding and integrating
 % suitable visualizations into their curriculum~\cite{Shaffer2011}.
 
-Visual programming languages enable programmers to write programs by directly
+Visual programming languages share a similar spirit, in that they enable writing programs by directly
 manipulating graphical elements rather than by typing text. These languages have
-gained widespread adoption in two main areas:
+gained widespread adoption in 
 (1) domain-specific languages for technical specialists (e.g. LabVIEW, Max/MSP),
 % such as LabVIEW for electronic systems designers and Max/MSP for digital music
 % creators
 and (2) educational programming environments such as Alice~\cite{Alice2008} and
 Scratch~\cite{Scratch2008}, which allow novices to create simple programs by
-snapping together colorful blocks. CodeInk introduces a new visual
-language for education that enables users to trace algorithms by
-manipulating data structures.
+snapping together blocks. CodeInk introduces a new visual
+language for education that enables users to trace algorithms by direct
+manipulation of data structures.
 
 \begin{comment}
 Direct manipulation (DM) user interfaces~\cite{Hutchins1985}, starting with

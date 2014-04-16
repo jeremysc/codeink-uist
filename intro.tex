@@ -3,8 +3,10 @@
 % Tracing algorithms is ubiquitous, fundamental
 Tracing algorithms on concrete examples is fundamental to teaching and learning
 in CS education~\cite{Lister2004}. Drawing traces on blackboards and paper is
-common practice (see \fig{fig:6006-insertion}), but it is also tedious and limiting. First, these media do not afford manipulation of the
-drawings, requiring the user to storyboard the behavior as a series of static
+common practice (\fig{fig:6006-insertion}), 
+%%% first fig should be #’d 1
+but is tedious and limiting. First, these 
+drawings can’t be manipulated, meaning the user has to storyboard the behavior as a series of static
 snapshots. Second, the drawing process is not recorded in a persistent format,
 making it hard for students and instructors to discuss individual steps in
 the algorithm unless they are co-located.
@@ -27,18 +29,20 @@ step translated into a line of Python code or an English explanation.}
 \end{figure}
 
 
-We hypothesize that the ideal user interface for teaching and learning
-algorithms should (a) afford direct manipulation of data structures, and (b)
+We hypothesize that a much better user interface for teaching and learning
+algorithms would (a) afford direct manipulation of data structures, and (b)
 record the trace in a structured format that can be disseminated and discussed.
 
-To explore this hypothesize, we built \emph{CodeInk}, a Web-based system for tracing
+To explore this hypothesis, we built \emph{CodeInk}, a Web-based system for tracing
 algorithms by direct manipulation (DM). CodeInk includes a DM gesture set that
-enables users to transform lists, trees and graphs rather than drawing
-static snapshots. When the user manipulates data structures, the trace is recorded as
-interactive program steps, in Python or English. The steps provide
+enables users to manipulate lists, trees and graphs rather than drawing (and re-drawing)
+static snapshots. All manipulationsare recorded as
+interactive program steps, in Python or English, providing
 three main benefits: feedback on user interactions, navigation through the
 trace, and a format that can be easily disseminated and analyzed as a basis for
-discussion. This paper makes three main contributions:
+discussion. 
+
+This paper makes three main contributions:
 
 \begin{comment}
 \fig{fig:codeink-intro} shows how an instructor can explain the merge sort
@@ -57,10 +61,10 @@ process by which the list was sorted.
 
 \begin{enumerate}\itemsep0pt
 
-\item The design of a novel direct manipulation (DM) gesture set for tracing algorithm
+\item A  novel direct manipulation (DM) gesture set for tracing algorithm
 behavior on lists, trees and graphs.
 
-\item CodeInk: a system for tracing algorithms that implements the DM
+\item CodeInk, a system for tracing algorithms that implements the DM
 gesture set and records traces as interactive, sharable program steps.
 
 \item An initial evaluation of CodeInk's viability in a controlled
@@ -71,10 +75,11 @@ solidify their understanding.
 \end{enumerate}
 
 % \pg{talk broader about future implications for this sort of technique}
+%%% missed that this was a comment and edited it (RD)
 \begin{comment}
-While our focus is on enhancing algorithm traces in a CS education context, the
+While our focus is on enhancing algorithm traces for CS education, we believe the
 ability to directly manipulate data structures and record those interactions as
-program steps may have broader applicability: for the general programmer, it may
+program steps may be more broadly applicable. for the general programmer, it may
 enable better visualization and exploration of an algorithm's design. We
 conclude this paper with a discussion of future work.
 \end{comment}
