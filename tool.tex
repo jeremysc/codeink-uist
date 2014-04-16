@@ -13,8 +13,9 @@
 %- Usage model through example
 %- Use cases
 
-\section{CodeInk: an algorithm tracing tool}
-CodeInk (\fig{fig:codeink-intro}) is a Web-based tool that enables teachers and
+\section{CodeInk: A system for tracing algorithms}
+CodeInk (\fig{fig:codeink-intro}) is a Web-based system that enables
+instructors and
 students to trace algorithms by direct manipulation. The system consists of
 three components: (1) a data palette for constructing examples of data
 structures, (2) a DM gesture set for demonstrating changes to the data
@@ -23,29 +24,30 @@ structures, and (3) the recorded trace.
 % analyzed as a basis for feedback.
 Its usage model is the following:
 
-\begin{enumerate}
+\begin{enumerate}\itemsep0pt
 
-\item Setup a concrete example of a data structure (number, list, binary tree,
+\item Set up a concrete example of a data structure (number, list, binary tree,
 graph) by dragging objects from the data palette onto the canvas and
 initializing their values.
 
-\item Directly manipulate the data structure using CodeInk's gesture set to
-carry out an algorithm's trace on the example.
+\item Directly manipulate the data structure using CodeInk's gesture set
+to trace an algorithm's operation on the example.
 
 \item Every interaction adds a step to the recorded trace, translated into
-Python or explanatory English (\fig{fig:codeink-intro}c). Click on any step to
+Python or an English description (\fig{fig:codeink-intro}c). Click on any step to
 jump to the corresponding point in the trace, or play back the trace using the
 controls in \fig{fig:codeink-intro}b.
 
-\item Share the explanation by generating a URL, embedding into a Web page, or
-exporting as a video. The trace is machine-readable (lines of Python), meaning
-it could be analyzed automatically to provide feedback at scale.
+\item Share the trace by generating a URL, embedding into a Web page, or
+exporting as a video. The trace is machine-readable since it maps to
+Python code, so it could be analyzed automatically to provide feedback
+at scale.
 
 \end{enumerate}
 
 \begin{comment}
 \subsection{Data Palette}
-The teacher or student begins by setting up an example on which an algorithm
+The instructor or student begins by setting up an example on which an algorithm
 will be traced. This can be done by dragging data structures from the Data
 Palette onto the stage (\fig{fig:visual_vocab}). Each data structure can be
 initialized by entering a numeric value into a prompt (list elements can be set

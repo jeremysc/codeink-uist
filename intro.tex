@@ -2,42 +2,43 @@
 
 % Tracing algorithms is ubiquitous, fundamental
 Tracing algorithms on concrete examples is fundamental to teaching and learning
-in CS education~\cite{Lister2004}, but drawing on blackboards and paper can be
-tedious and limiting. First, these media do not afford manipulation of the
-drawing, requiring the user to storyboard the behavior as a series of static
+in CS education~\cite{Lister2004}. Drawing traces on blackboards and paper is
+common practice (see \fig{fig:6006-insertion}), but it is also tedious and limiting. First, these media do not afford manipulation of the
+drawings, requiring the user to storyboard the behavior as a series of static
 snapshots. Second, the drawing process is not recorded in a persistent format,
-making it hard for students and teachers to discuss problems unless they are
-co-located.
+making it hard for students and instructors to discuss individual steps in
+the algorithm unless they are co-located.
 % This limitation is particularly problematic in a MOOC context, where the
 % majority of students do not have direct access to teaching staff.
+
 
 \begin{figure}
 
 \begin{center}
-%\includegraphics[width=0.55\columnwidth]{img/frontpage-6006.png}
 \includegraphics[width=\columnwidth]{img/frontpage-mergesort.png}
 \end{center}
 
-\caption{CodeInk is a Web-based environment that enables teachers and students
-to trace algorithms on examples by direct manipulation. The user can (a) compose and
-manipulate data structures, (b) step through the recorded trace, and (c) see
-each step translated into a line of Python code or an English explanation.}
+\caption{CodeInk enables students and instructors to trace algorithms on
+examples by direct manipulation. The user can (a) compose and manipulate
+data structures, (b) step through the recorded trace, and (c) see each
+step translated into a line of Python code or an English explanation.}
 
 \label{fig:codeink-intro}
 \end{figure}
+
 
 We hypothesize that the ideal user interface for teaching and learning
 algorithms should (a) afford direct manipulation of data structures, and (b)
 record the trace in a structured format that can be disseminated and discussed.
 
-To explore this, we built \emph{CodeInk}, a Web-based environment for tracing
-algorithms by direct manipulation (DM). It includes a DM gesture set that
-enables users to transform lists, trees and graphs rather than tediously draw
-snapshots. When the user manipulates data structures, the trace is recorded as
-interactive program steps, in Python or explanatory English. The steps provide
+To explore this hypothesize, we built \emph{CodeInk}, a Web-based system for tracing
+algorithms by direct manipulation (DM). CodeInk includes a DM gesture set that
+enables users to transform lists, trees and graphs rather than drawing
+static snapshots. When the user manipulates data structures, the trace is recorded as
+interactive program steps, in Python or English. The steps provide
 three main benefits: feedback on user interactions, navigation through the
 trace, and a format that can be easily disseminated and analyzed as a basis for
-discussion. This paper makes the following primary contributions:
+discussion. This paper makes three main contributions:
 
 \begin{comment}
 \fig{fig:codeink-intro} shows how an instructor can explain the merge sort
@@ -49,22 +50,23 @@ Every interaction is interpreted as a step in Python (\fig{fig:codeink-intro}c).
 The trace can then be shared with students, who can navigate through it by
 single-stepping or clicking on steps (\fig{fig:codeink-intro}b), and then trace
 the algorithm for themselves on a new example. Their own trace can be shared
-with teachers as a basis for feedback on not just the final output, but also the
+with instructors as a basis for feedback on not just the final output, but also the
 process by which the list was sorted.
 \end{comment}
 
 
-\begin{enumerate}
+\begin{enumerate}\itemsep0pt
 
-\item The design of a direct manipulation (DM) gesture set for tracing algorithm
+\item The design of a novel direct manipulation (DM) gesture set for tracing algorithm
 behavior on lists, trees and graphs.
 
-\item CodeInk: an environment for tracing algorithms that implements the DM
-gesture set and records traces as sharable, interactive program steps.
+\item CodeInk: a system for tracing algorithms that implements the DM
+gesture set and records traces as interactive, sharable program steps.
 
-\item An evaluation of CodeInk's viability in a controlled study, where students
-watched CodeInk-produced traces to learn an algorithm, and then used CodeInk to
-trace the algorithm on a new example to solidify their understanding.
+\item An initial evaluation of CodeInk's viability in a controlled
+study. Students watched CodeInk-produced traces to learn a new algorithm
+and then used CodeInk to trace the algorithm on a new example to
+solidify their understanding.
 
 \end{enumerate}
 

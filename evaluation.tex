@@ -1,69 +1,72 @@
-\newpage
-\section{Evaluation}
+\section{Initial Evaluation}
 
-% Testing a novel learning interaction, where students watch a CodeInk-produced
-% trace of an algorithm, then trace the algorithm for themselves on new examples
-% in the same environment
-An initial study of the proposed DM gesture set~\cite{Scott2014} showed that it
-was both easier to use and more helpful than a standard drawing application for
-TAs explaining list sorting algorithms. We extended this study to evaluate
-CodeInk's viability as a learning tool for undergraduate CS students.
-Specificially, we tested the following:
+% Testing a novel learning interaction, where students watch a
+% CodeInk-produced trace of an algorithm, then trace the algorithm for
+% themselves on new examples in the same environment
+A formative study of our earlier DM gesture set~\cite{Scott2014} showed
+that instructors found CodeInk easier to use and more helpful than a
+computer drawing application for explaining list sorting algorithms. In
+this initial study, we evaluated two hypotheses about CodeInk's
+viability for CS students:
 
-\noindent \textbf{H1}: Students learn as effectively from a CodeInk-produced
-explanation as they do from a standard lecture video.
+\noindent \textbf{H1}: Students learn as effectively from a
+CodeInk-produced explanation as they do from a standard lecture video.
 
 \noindent \textbf{H2}: Students are able to correctly trace the learned
 algorithm on a new example data structure.
 
-\subsection{Subjects}
-We recruited nine students from the introductory programming class at our
-university. Before the study began, we asked subjects to rate their initial
-understanding of lists, insertion sort, and merge sort on a 7-point Likert
-scale, based on how well they could explain the concept to another person. The
-mean age was 20 ($\sigma$=3.12), with 2 males and 7 females. The mean
-self-reported understanding for lists was 2.89 ($\sigma$=2.37).
-8 out of 9 students stated they had never seen insertion sort or merge sort
-before (mean = 1.22, $\sigma$=0.67).
+\noindent \textbf{Subjects}: We recruited nine students from the
+introductory programming class at our university. Before the study
+began, we asked subjects to rate their initial understanding of lists,
+insertion sort, and merge sort on a 7-point Likert scale, based on how
+well they could explain the concept to another person. The mean age was
+20 ($\sigma$=3.12), with 2 males and 7 females. The mean self-reported
+understanding for lists was 2.89 ($\sigma$=2.37). 8 out of 9 students
+had never seen insertion or merge sort before (mean understanding =
+1.22, $\sigma$=0.67).
 
-\subsection{Tasks and Procedures}
-Each subject began the 30-minute study by watching a training video and becoming
-familiar with CodeInk's UI and DM gesture set. Students then performed the main
-task twice, once for each of insertion sort and merge sort: first, they learned
-about the algorithm by watching a tutorial video ({\em learning phase}) and then
-explained its trace on a different list back to the experimenter ({\em
-explanation phase}).
+\noindent \textbf{Tasks and Procedures}: Each subject began the
+30-minute study by watching a training video and getting familiar with
+CodeInk's UI and DM gesture set. Students then performed the main task
+twice, once for insertion sort and once for merge sort. First, they
+learned about the algorithm by watching a video ({\em learning phase})
+and then explained its trace on a different list back to the
+experimenter ({\em explanation phase}).
 
-In the learning phase, the tutorial video was either a CodeInk-produced
-explanation or an excerpt from a classroom lecture, where an instructor traces
-the sorting algorithm on an example list on the blackboard
-(\fig{fig:6006-insertion}). The CodeInk-produced trace covered the same worked
-examples as the lecture videos. After this phase, the student was asked to rate
-their new understanding of the algorithm on a 7-point Likert scale. In the
-explanation phase, the student used CodeInk to trace the algorithm on a new
-list.
+In the learning phase, the video was either a screencast of a
+CodeInk-produced trace or an excerpt from a classroom lecture
+video, where an instructor traces the sorting algorithm on an example
+list on the blackboard (\fig{fig:6006-insertion}). The CodeInk-produced
+trace covered the exact same examples as the lecture videos. After this
+phase, the student was asked to rate their new understanding of the
+algorithm on a 7-point Likert scale. In the explanation phase, the
+student used CodeInk to trace the algorithm on a new list.
 
 % After the main task, subjects filled out an exit questionnaire, rating the
 % helpfulness of three key CodeInk features: the direct manipulation language,
 % visualizations of comparisons, and having the trace recorded as a list of
 % Python steps.
 
-\subsection{Results}
-\textbf{H1} is supported by our study. Recall that 8 out of 9 students reported
-they had never seen insertion sort or merge sort. After the learning phase,
-students reported that they learned equally well from a CodeInk-produced
-explanation (6.00) as they did from a standard lecture video (5.56). This
-difference was not statistically significant (p=0.196 using a Mann-Whitney U
-test). \textbf{H2} was also supported, because all students were able to trace
-both insertion sort and merge sort correctly on new examples. That is, both the
-process and final output demonstrated in their traces were correct.
+\noindent \textbf{Results}: Our study supported \textbf{H1}. Recall that
+8 out of 9 students reported they had never before seen insertion sort
+or merge sort. After the learning phase, students reported that they
+learned equally well from a CodeInk-produced traces (mean understanding
+= 6.00) as they did from a standard lecture video (mean = 5.56). The
+difference was not statistically significant (p=0.196 using a
+Mann-Whitney U test). \textbf{H2} was also supported, because all
+students who watched the CodeInk-produced trace could then use CodeInk
+to trace both insertion sort and merge sort correctly on the new list.
+
+%That is, both the process and final output demonstrated in their traces
+%were correct.
 
 %In other words, we found no evidence that CodeInk is any more or less effective
 %than a standard online lecture video for teaching these particular algorithms.
 
-This study demonstrates the potential for a new kind of learning workflow, where
-CodeInk explanations can be embedded in online course content in place of
-screencasts, and students can learn about algorithms and practice tracing their
-behavior in the same environment. Their efforts could then be shared and
-analyzed by teaching staff, manually or automatically, as a basis for targeted
-feedback on the student's understanding.
+This initial study suggests the potential for a new kind of learning
+workflow, where CodeInk explanations can be embedded in online course
+content. Students can learn about algorithms and practice tracing their
+behavior in the same environment. Their traces could then be shared and
+analyzed by teaching staff, manually or automatically, as a basis for
+targeted feedback~\cite{Balzer1989} on the student's understanding.
+
