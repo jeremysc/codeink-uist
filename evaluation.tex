@@ -1,195 +1,67 @@
 \section{Evaluation}
 
-\pg{Note that we cannot mention MIT by name due to the double-blind
-review process.}
+% Testing a novel learning interaction, where students watch a CodeInk-produced
+% trace of an algorithm, then trace the algorithm for themselves on new examples
+% in the same environment
+In an initial study of the proposed DM language~\cite{Scott2014}, the gestures
+were found to be both easy to use and helpful for TAs explaining list sorting
+algorithms. We extended this study to evaluate CodeInk's viability as a learning
+tool for undergraduate CS students. Specificially, we tested the following:
 
-To evaluate the usability of our language and tool, we conducted a
-comparative study of CodeInk against a standard drawing application
-(GIMP). We tested on two populations, students and teaching assistants
-(TAs) from computer science classes at our university, asking them to compare their
-experiences using each tool to explain list sorting algorithms. We
-tested the following hypotheses:
+\noindent \textbf{H1}: Students learn as effectively from a CodeInk-produced
+explanation as they do from a standard lecture video.
 
-%We hypothesized that subjects would find CodeInk easier to use, faster,
-%and more helpful for explaining traces of algorithms. Specifically, we
-%tested the following hypotheses:
-
-\noindent \textbf{H1}: Students and TAs find it easier to explain list sorting
-algorithms using CodeInk than using the drawing application.
-
-\noindent \textbf{H2}: Students and TAs explain list sorting algorithms
-faster using CodeInk than using the drawing application.
-
-\noindent \textbf{H3}: Students and TAs find CodeInk more helpful than
-the drawing application for explaining an algorithm's trace.
-
-\noindent \textbf{H4}: Students learn at least as effectively from a
-CodeInk-produced explanation as they do from a standard lecture video.
+\noindent \textbf{H2}: Students are able to correctly trace the learned
+algorithm on a new example data structure.
 
 \subsection{Subjects}
-We recruited nine students and four TAs from two undergraduate classes
-at our university. The students had just begun to take the Introduction to CS and Programming
-class, and the TAs were either active or former staff from the introductory
-algorithms class. Before the interview began, we asked subjects to rate their
-initial understanding of lists, insertion sort, and merge sort on a 7-point Likert
-scale, based on how well they thought they could explain the concept to another
-person.
-
-\noindent \textbf{Students:} The mean age was 20 ($\sigma$=3.12), with 2 males
-and 7 females. The mean self-reported level of understanding for lists was 2.89
-($\sigma$=2.37). Students had almost no initial understanding of insertion sort
-or merge sort: mean rating of 1.22 ($\sigma$=0.67) for both algorithms. 8 of the
-9 students stated that they had never seen insertion sort or merge sort.
-
-\noindent \textbf{TAs:} The mean age was 23.5 ($\sigma$=4.0), with 2
-males and 2 females. For both insertion sort and merge sort, the mean
-self-reported initial understanding was 5.75 ($\sigma$=0.96).
-
-% and a weaker understanding of an AVL insertion (3.75, $\sigma$ =
-% 0.50).
+We recruited nine students from the introductory programming class at our
+university. Before the study began, we asked subjects to rate their initial
+understanding of lists, insertion sort, and merge sort on a 7-point Likert
+scale, based on how well they could explain the concept to another person. The
+mean age was 20 ($\sigma$=3.12), with 2 males and 7 females. The mean
+self-reported understanding for lists was 2.89 ($\sigma$=2.37).
+8 out of 9 students stated they had never seen insertion sort or merge sort
+before (mean = 1.22, $\sigma$=0.67).
 
 \subsection{Tasks and Procedures}
-Our study had 2x2 conditions: two list sorting algorithms (insertion and merge
-sort) and two tools for explaining each algorithm (CodeInk and the GIMP digital
-drawing application used with a Wacom pen tablet). We chose GIMP because it is
-typical of the generic drawing tools used by instructors to illustrate
-algorithms. We used a within-subjects design, where subjects explained the two
-sorting algorithms in both CodeInk and in GIMP. The tool-ordering for a
-particular algorithm, and the algorithm-order were counterbalanced between
-subjects to avoid confounding effects.
-
-Each subject began the 45-minute study by watching a 5-minute training video
-that explained CodeInk's user interface and direct manipulation language.
-They were given time to become familiar with CodeInk, GIMP, and the Wacom pen
-tablet hardware. The main tasks that followed differed slightly between students
-and TAs because of their differing prior knowledge of lists and sorting
-algorithms.
-
-\noindent \textbf{Students:} After training, students performed the main task
-twice (once for each algorithm): first, they learned about a sorting algorithm
-by watching a tutorial video ({\em learning phase}) and then explained the
-algorithm's trace on a different list back to the experimenter ({\em explanation
-phase}).
+Each subject began the 30-minute study by watching a training video and becoming
+familiar with CodeInk's UI and DM gesture set. Students then performed the main
+task twice, once for each of insertion sort and merge sort: first, they learned
+about the algorithm by watching a tutorial video ({\em learning phase}) and then
+explained its trace on a different list back to the experimenter ({\em
+explanation phase}).
 
 In the learning phase, the tutorial video was either a CodeInk-produced
 explanation or an excerpt from a classroom lecture, where an instructor traces
-the sorting algorithm on an example list on the blackboard (see
-\fig{fig:6006-insertion}). The CodeInk-produced explanations covered the same
-worked examples as the lecture videos. After this phase, the student was asked to rate
-their new understanding of the algorithm on a 7-point Likert scale.
+the sorting algorithm on an example list on the blackboard
+(\fig{fig:6006-insertion}). The CodeInk-produced trace covered the same worked
+examples as the lecture videos. After this phase, the student was asked to rate
+their new understanding of the algorithm on a 7-point Likert scale. In the
+explanation phase, the student used CodeInk to trace the algorithm on a new
+list.
 
-In the explanation phase, the student used both tools to explain the algorithm's
-trace on a new list, both verbally and graphically. First, they
-used the tool that matched the learning phase condition (the {\em primary tool})
--- GIMP if they watched a lecture video, and CodeInk if they watched a CodeInk
-explanation.
-% We did this to compare learning with either standard online tools or with
-% CodeInk.
-After using the primary tool, the student rated their experience in terms of
-ease of use and helpfulness for explaining the algorithm. Next, they explained
-the algorithm again using the other tool condition, but were not asked to rate
-their experience to account for learning effects.
-
-\noindent \textbf{TAs:} Since TAs already had a solid understanding of insertion
-sort and merge sort, they performed only the explanation phase. Similar to
-students, for each algorithm they were asked to explain its trace on an example
-list using both tools. Again, they were only asked to rate their experience
-(ease of use and helpfulness) after using the primary tool.
-
-After the main task, subjects filled out an exit questionnaire, rating the
-helpfulness of three key CodeInk features: the direct manipulation language,
-visualizations of comparisons, and having the trace recorded as a list of Python
-steps.
-
-%Finally, in a short verbal exit interview, we asked them to describe the
-%biggest advantages and disadvantages of explaining algorithms in
-%CodeInk, relative to the drawing tool.
+% After the main task, subjects filled out an exit questionnaire, rating the
+% helpfulness of three key CodeInk features: the direct manipulation language,
+% visualizations of comparisons, and having the trace recorded as a list of
+% Python steps.
 
 \subsection{Results}
+\textbf{H1} is supported by our study. Recall that 8 out of 9 students reported
+they had never seen insertion sort or merge sort. After the learning phase,
+students reported that they learned equally well from a CodeInk-produced
+explanation (6.00) as they did from a standard lecture video (5.56). This
+difference was not statistically significant (p=0.196 using a Mann-Whitney U
+test). \textbf{H2} was also supported, because all students were able to trace
+both insertion sort and merge sort correctly on new examples. That is, both the
+process and final output demonstrated in their traces were correct.
 
-We combined quantitative data from students and TAs, because a Mann-Whitney U
-test found no statistically significant effect of the subject type on task
-completion time or tool ratings. This might be due to the students' high
-self-rated understanding of the algorithms after the learning phase (mean rating
-of 5.78 out of 7).
+%In other words, we found no evidence that CodeInk is any more or less effective
+%than a standard online lecture video for teaching these particular algorithms.
 
-\textbf{H1} (CodeInk easier to use) and \textbf{H3} (CodeInk is more helpful)
-are both supported by our study. Across subjects, the mean ease of use score was
-5.21 for CodeInk and 4.08 for the drawing application. Also, CodeInk's
-helpfulness in explaining algorithms had a mean rating of 6.21, compared to 5.00
-for the drawing application. For both of these ratings, the difference was
-statistically significant using a Mann-Whitney U test (p$<$0.05 for ease of use,
-p$<$0.005 for helpfulness).
-
-%Furthermore, from the final questionnaire, the mean agreement level was
-%5.08 for the statement: {\em CodeInk was easier to use than the drawing
-%application for explaining algorithms}, and 5.54 for the statement: {\em
-%CodeInk was more helpful for explaining algorithms than the drawing
-%application.}
-
-\textbf{H2} (CodeInk faster to use) was partially supported. We compared
-completion times between the two tool conditions separately for insertion sort
-and merge sort. For insertion sort, subjects completed the explanation 40\%
-faster on average in CodeInk -- statistically significant using a Wilcoxon
-Signed-rank test (p$<$0.001). However, explanations of merge sort were only 3\%
-faster, which was not found to be significant.
-
-\textbf{H4} (Students can learn effectively from CodeInk-produced explanations)
-is supported by our study. Recall that 8 out of 9 students reported they had
-never seen insertion sort or merge sort before the study. After watching the
-tutorials in the learning phase, the mean self-rated understanding score was
-5.56 for standard lecture videos and 6.00 for CodeInk-produced explanations. The
-difference between these scores was not statistically significant (p=0.196 using
-a Mann-Whitney U test). In other words, we found no evidence that CodeInk is any
-more or less effective than a standard online lecture video for explaining these
-particular algorithms.
-
-\subsection{Discussion}
-
-Our study found that CodeInk was easier to use and more helpful than a standard
-drawing tool for explaining sorting algorithms. In the exit questionnaire, subjects
-strongly agreed that CodeInk's features were helpful for explaining the sorting
-algorithms, in particular being able to directly manipulate data structures
-(mean of 6.62) and visualize numeric comparisons (6.08). Multiple subjects
-commented that the affordances and constraints of CodeInk ``felt realistic for
-explaining the algorithm,'' and that ``actually swapping the elements was more
-illustrative than redrawing the list over and over again.'' Subjects found the
-list of steps slightly less important than CodeInk's other features (5.38). We
-observed that subjects primarily focused on the main canvas, not the list of
-steps (e.g., \fig{fig:codeink-intro}c), while demonstrating an algorithm's
-trace.
-
-While subjects were able to explain insertion sort much faster in CodeInk (40\%
-faster), the same was not true for merge sort.
-Subjects encountered some usability problems when performing repetitive tasks
-necessary for tracing merge sort. For example, when merging one element at a
-time into the final list, subjects would often accidentally dwell and remove an
-element instead of copying it. While subjects found comparisons illustrative,
-they would also sometimes accidentally compare values when dragging a list
-element across the canvas. Replacing the dwelling construct with more explicit
-controls for entering \texttt{copy}, \texttt{remove}, \texttt{compare} or
-\texttt{assign} modes might resolve some of these usability problems.
-
-Students reported that they learned equally well from a CodeInk-produced
-explanation as they did from a standard lecture video excerpt. This
-finding may indicate that CodeInk explanations can be embedded in online
-course content in place of screencasts created using drawing
-applications or blackboard recordings.
-
-Finally, this study demonstrated the potential for a new kind of
-learning workflow, where students can learn and solidify their
-understanding of algorithms in the same environment. After
-stepping through an instructor-recorded explanation, students can
-immediately get additional practice by tracing the algorithm on new
-example data. The student-generated traces can be analyzed either
-manually or automatically to give the student targeted feedback on their
-understanding of not just the final output, but also their
-problem-solving process.
-
-%\todo{Jeremy: I've been getting a better sense of what the benefits
-%might be for students. In general, the user studies have been much more
-%positive for students than for TAs. It has something do with the 6.00
-%students having no vocabulary for describing data structures, and
-%CodeInk turning out to be a reasonable visual and gestural vocab for
-%learning list sorting. Will have to formalize these things tomorrow when
-%I have some time to reflect on the results...}
+This study demonstrates the potential for a new kind of learning workflow, where
+CodeInk explanations can be embedded in online course content in place of
+screencasts, and students can learn about algorithms and practice tracing their
+behavior in the same environment. Their efforts could then be shared and
+analyzed by teaching staff, manually or automatically, as a basis for targeted
+feedback on the student's understanding.

@@ -7,8 +7,8 @@
 % if using array.sty, it might be a good idea to tweak the value of
 % \extrarowheight as needed to properly center the text within the cells
 % \setlength{\extrarowheight}{10pt}
-\caption{CodeInk's Direct Manipulation Language}
-\label{tbl:language_table}
+\caption{CodeInk's Direct Manipulation Gesture Set}
+\label{tbl:gesture_table}
 \centering
 % % Some packages, such as MDW tools, offer better commands for making tables %
 % than the plain LaTeX2e tabular which is used here.
@@ -51,7 +51,7 @@ Mark a list element or tree/graph node (e.g. as sorted or visited) &
 \end{tabular}
 \end{table}
 
-CodeInk's DM gesture set (summarized in Table \ref{tbl:language_table}) enables
+CodeInk's DM gesture set (summarized in Table \ref{tbl:gesture_table}) enables
 users to trace algorithms by manipulating numbers, lists, binary trees and
 graphs. From our exercise in watching lecture videos of an introductory
 algorithms class, we compiled a list of program behaviors that need to be
@@ -69,13 +69,13 @@ into another compares their numeric values, regardless of whether they are
 numbers, list elements, nodes or some mixture thereof. Similarly, popping a list
 element or detaching a subtree from its parent is accomplished by grabbing it
 and holding it (\emph{dwelling}) until it can be moved away freely. We will
-explain the design decision of introducing dwelling later.
+explain the design decision behind dwelling later.
 
 % The gesture set is best explained through examples, which we provide below.
 
 \subsection{Worked Example: Insertion Sort}
 Tracing insertion sort's execution on an example list is usually performed by
-storyboarding its behavior, redrawing the list in several new configurations
+storyboarding its behavior: redrawing the list in several new configurations
 (\fig{fig:6006-insertion}). In CodeInk, the algorithm can be traced as follows:
 
 \noindent 1) Drag an example list onto the canvas and type in a comma-separated
@@ -121,19 +121,16 @@ to create a list insertion step in the trace. The list collapses again in its ne
 
 \noindent \includegraphics[width=0.7\columnwidth]{img/examples/insertion-6.png}
 
-The user explains the rest of insertion sort by moving down the list and
-inserting elements into the sorted sublist until the entire list is sorted. If
-any mistakes are made, the user can \emph{undo} steps to remove them from the
-trace. Many list sorting and searching algorithms can be explained using this
-subset of CodeInk's direct manipulation language: creating lists and dragging
-elements to show comparisons and rearrangements.
+The user traces the rest of insertion sort by moving down the list and inserting
+elements into the sorted sublist until the entire list is sorted.
+If any mistakes are made, the user can \emph{undo} steps to remove them from the
+trace.
 
 \subsection{Example: AVL Insertion}
-Tracing an AVL (balanced binary search tree) insertion can be a tedious and
-error-prone process, because rotations have to be shown by redrawing the
-entire tree in a new configuration. CodeInk's gesture set affords users the
-ability to rearrange nodes in the tree by detaching, dragging and reattaching
-them.
+Tracing an AVL (balanced binary search tree) insertion on paper can be tedious
+and error-prone, because rotations have to be shown by redrawing the entire tree
+in a new configuration. CodeInk's gesture set affords users the ability to
+rearrange nodes in the tree by detaching, dragging and reattaching them.
 
 \noindent \begin{tabular}{m{4.6cm} m{3.4cm}}
 
@@ -204,7 +201,7 @@ numeric comparison (step 2), and grabbing and dwelling on a child object
 removes it from its parent data structure (step 5).
 
 \begin{comment}
-\noindent \textbf{Graph algorithms}: Our language also covers graph
+\noindent \textbf{Graph algorithms}: Our gesture set also covers graph
 traversal, such as search or finding shortest paths (see
 \fig{fig:example-dijkstra}). It supports creating and attaching graph
 nodes and edges, updating node and edge values, and marking nodes as
@@ -268,65 +265,45 @@ selecting ``Fill" and clicking on that node.
 \end{comment}
 
 \subsection{Chaining and traversal patterns}
-The user can chain multiple gestures while dragging an object. One common
-example of chaining arises when describing a traversal pattern involving a
-series of comparisons. For example, during insertion sort, the user can drag an
-element along the list, performing comparisons without releasing it until the
-correct location is found. When the location is found, the user can release the
-element into the gap between two existing elements, resulting in an insertion.
+In CodeInk, the user can chain multiple gestures while dragging an object to
+describe a traversal pattern. For example, during insertion sort, the user can
+drag an element along the list, performing comparisons without releasing it
+until the correct location is found. Similarly, during an AVL insertion, a
+candidate node is dragged through the tree to make comparisons and follow
+pointers to find the insertion point.
 
-One subtle interaction issue during a chain of gestures is deciding which
-behaviors to commit to the list of steps, and which to omit. For example, the
-user should be allowed to drag an element into a list, then undo the behavior by
-dragging it back out of the list. The insertion should be committed only when
-the new value is released into the list. However, other behaviors like
-comparisons should be committed while the user continues to drag, since they are
-performed as part of the traversal pattern. Note that in the insertion sort
-demonstration, there is only one grab, drag, and release, but both the
-numeric comparison and swap are added to the trace. The same applies for
-the AVL insertion, where the candidate node is dragged
-through the tree in one motion, until it is released at a leaf.
-
-In exploring this issue of which behaviors to commit, we have found it useful to
-distinguish between mutation and observation behaviors. Mutation behaviors are
-those that result in data structure changes (e.g., insertions, assignments), while
-observation behaviors only visualize decision making in the algorithm
-(e.g., comparisons, following pointers), and do not affect the underlying data
-structures. In a chain of gestures, observation behaviors are continuously
-committed to the algorithm's trace, while mutation behaviors are committed
-only if the data structure has changed at the end of a gesture.
+One subtle interaction issue is deciding which behaviors in a chain of gestures
+to commit to the list of steps. For example, the user should be allowed to drag
+an element into a list, then undo the behavior by dragging it back out. The
+insertion should only be committed if the new value is released into the list,
+but comparisons should be committed while the user is dragging the element as
+part of a traversal pattern. We therefore distinguish between \emph{mutation}
+and \emph{observation} behaviors as those that affect the underlying data and
+those that only visualize decision making in the algorithm, respectively. In a
+chain of gestures, observation behaviors are continuously committed to the
+algorithm's trace, while mutation behaviors are committed only at the end of a
+gesture.
 
 \subsection{Resolving overloaded gestures}
 \label{sec:overloaded-gestures}
 
-When designing a gesture vocabulary, the gesture that seems most natural for a
-task can often be interpreted in multiple ways. There are two main examples of
-this in CodeInk's language: ambiguity in the drag-into gesture, and ambiguity in
-the drag-away gesture when the value is part of some higher-level data structure
-(e.g. a list element, or a child node in a tree or graph).
-
-The drag-into gesture is ambiguous because dragging one object into
-another could be interpreted as a comparison (\texttt{x$<$y}), an
-assignment (\texttt{x=y}), or an augmented assignment such as
-\texttt{x+=y} or \texttt{x-=y}.
-
+% When designing a gesture vocabulary, the gesture that seems most natural for a
+% task can often be interpreted in multiple ways.
+There are two overloaded gestures: the drag-into and drag-away gestures. The
+drag-into gesture is ambiguous because dragging one object into another could be
+interpreted as a comparison (\texttt{x$<$y}) or an assignment (\texttt{x=y}).
+% or an augmented assignment such as \texttt{x+=y} or \texttt{x-=y}.
 Performing the drag-away gesture on a child object is ambiguous because it is
-not obvious whether the parent object should be altered or not. For example,
-when dragging an element away from a list, should a copy of the element be made,
-or should the element be pulled out of the parent list? For trees and graphs,
-should a copy of the dragged node be made, or should that node and its
-descendants be detached from the parent?
+not obvious whether the parent object should be altered or not.
+For example, when dragging an element away from a list, should a copy of the
+element be made, or should the element be popped from the parent list?
+% For trees and graphs, should a copy of the dragged node be made, or should
+% that node and its descendants be detached from the parent?
 
-Our solution is to default to the observation behavior of a gesture, and preview
-other possible mutation behaviors if the user dwells for more than one second.
-This means defaulting to a comparison for the drag-into gesture, and making a
-copy of the dragged value for the drag-away gesture.
-%
-This is also useful for a chained traversal pattern, since the comparisons
-can occur in quick succession while dragging without dwelling.
-
-%In order to make an assignment, the user can drag the source object into
-%the target and dwell. At that point, the system cycles through different
-%interpretations of the gesture. In the case of dragging a child object,
-%the user selects and dwells on a list element or node until it turns
-%blue, indicating it has been detached from its parent.
+Our solution is default to observation behaviors, and preview other possible
+mutation behaviors if the user dwells - grabs and holds the object - for more
+than one second.
+% This means defaulting to a comparison for the drag-into gesture, and making a
+% copy of the dragged value for the drag-away gesture.
+This aligns well with chained traversal patterns, since comparisons can occur in
+quick succession while dragging without dwelling.
