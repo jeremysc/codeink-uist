@@ -1,5 +1,10 @@
-\section{CodeInk: an algorithm animation tool}
-
+%concrete tracing, worked examples, targeted feedback, and instructional
+% scaffolding.
+%We hypothesize that the ideal user interface for teaching and learning
+%algorithms should support exploration by tracing, and enhance the experience by
+%(a) affording users the ability to directly manipulate data structures, and
+%(b) recording the trace in a structured, persistent format that affords
+%dissemination, interaction and discussion.
 
 % CodeInk:
 %- Objective: enable teachers and students to explain algorithms by directly
@@ -8,43 +13,73 @@
 %- Usage model through example
 %- Use cases
 
-%The primary contribution of this paper is a direct manipulation language
-%for explaining algorithms. To realize and evaluate this language, we
-%implemented a prototype tool called CodeInk, which serves as our
-%%details of our language.
-
-CodeInk (\fig{fig:codeink-intro}) is a Web-based algorithm animation tool that
-enables instructors and students to explain algorithms by directly manipulating
-data structures. It implements the direct manipulation language we present in the
-next section, enabling us to evaluate the language's usability and benefits.
-CodeInk's design is motivated by the common convention of teaching and learning
-algorithms with worked examples~\cite{Sweller1985} -- step-by-step
-demonstrations of how to solve a problem on concrete examples.
-\fig{fig:6006-insertion}, for instance, shows how instructors often explain
-insertion sort in an introductory algorithms class: they trace the algorithm's
-steps on a concrete list rather than, say, analyze abstract pseudocode.
-Due to the limitations of the blackboard, the instructor is forced to show
-element swaps by redrawing the list in each stage of the sort.
-
-CodeInk eliminates the tedium of drawing such storyboard diagrams, making it possible to
-manipulate the data structure directly. Its basic usage model is:
+\section{CodeInk: an algorithm tracing tool}
+CodeInk (\fig{fig:codeink-intro}) is a Web-based tool that enables teachers and
+students to trace algorithms by direct manipulation. The system consists of
+three components: (1) a data palette for constructing examples of data
+structures, (2) a DM gesture set for demonstrating changes to the data
+structures, and (3) the recorded trace.
+% which both enables navigation through the trace and can be disseminated or
+% analyzed as a basis for feedback.
+Its usage model is the following:
 
 \begin{enumerate}
 
-\item Set up a concrete example of a data structure (list, binary tree,
-graph) by dragging constituent objects onto the canvas and
+\item Setup a concrete example of a data structure (number, list, binary tree,
+graph) by dragging objects from the data palette onto the canvas and
 initializing their values.
 
-\item Directly manipulate the data structure using gestures to
-demonstrate an algorithm's trace on that data.
+\item Directly manipulate the data structure using CodeInk's gesture set to
+carry out an algorithm's trace on the example.
 
-\item Every interaction adds a step to the trace, translated into Python
-code (\fig{fig:codeink-intro}c). Click on any step to jump to the
-corresponding point in the trace, or play back the trace using the
+\item Every interaction adds a step to the recorded trace, translated into
+Python or explanatory English (\fig{fig:codeink-intro}c). Click on any step to
+jump to the corresponding point in the trace, or play back the trace using the
 controls in \fig{fig:codeink-intro}b.
 
-\item Share the explanation online by generating a URL, embedding into a
-Web page, or exporting as a video.
+\item Share the explanation by generating a URL, embedding into a Web page, or
+exporting as a video. The trace is machine-readable (lines of Python), meaning
+it could be analyzed automatically to provide feedback at scale.
 
 \end{enumerate}
 
+\begin{comment}
+\subsection{Data Palette}
+The teacher or student begins by setting up an example on which an algorithm
+will be traced. This can be done by dragging data structures from the Data
+Palette onto the stage (\fig{fig:visual_vocab}). Each data structure can be
+initialized by entering a numeric value into a prompt (list elements can be set
+by entering a comma-separated list of numbers). CodeInk's current visual
+vocabulary supports numeric values, which is sufficient for explaining most
+sorting and search algorithms. We discuss extensions of the vocabulary in the
+future work section. The \emph{finger} can be used to express the current
+traversal point in an algorithm, like a \emph{curr} pointer. In an educational
+setting, the finger replaces the instructor pointing to a particular object
+during lecture.
+\end{comment}
+
+\input{language}
+
+\subsection{Recorded Trace}
+
+%Each gesture is translated to a line of Python or
+%explanatory English, effectively recording the trace as a set of program steps.
+% The steps are interactive, enabling the user to navigate through the trace by
+% single-stepping
+%or clicking to jump between steps. The recorded trace can also be shared
+% between teachers and students, enabling dissemnation, discussion and feedback.
+
+\subsection{Scope: concrete traces and visual problems}
+% unfolding of the loops and branches in an algorithm's pseudocode
+Second, this work focuses on supporting traces on lists, binary trees, and
+graphs, because their canonical algorithms -- sorting, rotation, search and
+shortest paths -- are widely taught in introductory CS and algorithms classes.
+These data structures and their associated algorithms are also inherently
+visual: The natural way to teach and think through them is by drawing diagrams.
+Thus, we envision direct manipulation for tracing to be most useful for these
+types of problems.
+% Also, they represent around \todo{50\%} of the algorithms covered in
+% CLRS~\cite{Cormen2001}, one of the most popular algorithms textbooks.
+In \sec{sec:design-and-future-work}, we discuss how our language can be extended
+to support demonstrations of an algorithm's general behavior across more kinds
+of data structures.

@@ -1,123 +1,85 @@
-\section{Direct Manipulation Language for Explaining Algorithms}
+% Included in tool.tex
+\subsection{Direct Manipulation Gesture Set}
 
-CodeInk includes a visual vocabulary for common data structures and a direct
-manipulation language for describing primitive behaviors that occur in commonly
-taught algorithms. In this section, we describe the scope of this work, and
-present our visual vocabulary and direct manipulation language.
+\begin{table}[!b]
+% % increase table row spacing, adjust to taste
+\renewcommand{\arraystretch}{1.75}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+% \setlength{\extrarowheight}{10pt}
+\caption{CodeInk's Direct Manipulation Language}
+\label{tbl:language_table}
+\centering
+% % Some packages, such as MDW tools, offer better commands for making tables %
+% than the plain LaTeX2e tabular which is used here.
+\begin{tabular}{|p{3.8cm} |p{3.8cm} |}
+\hline
+\textbf{Program Behavior} & \textbf{DM Gesture} \\
+\hline
+%Access a value & Grab value and drag elsewhere \\
+%\hline
+Use or copy an object's value & {\em drag-away}: Grab an object, and drag it
+away quickly.
+Drop it on the canvas to create a new number with the same value.
+\\
+\hline
+Remove an object from its parent (e.g. element from list, node from tree/graph) & {\em dwell-drag-away}: Grab an object, dwell for one second, then
+drag it elsewhere.
+\\
+\hline
+Compare two objects' values & {\em drag-into}: Drag one value into another.
+\\
+\hline
+Assign one object's value to another &
+{\em drag-into-dwell}: Drag one value into another, and
+dwell until the desired interpretation (\texttt{=, +=, -=}) appears. \\
+\hline
+Insert a value into a list, or a node into a tree/graph
+& {\em drag-insert}: Drag the value into a gap in the list, or the node to the
+tip of an edge
+\\
 
-\subsection{Scope: concrete traces and visual problems}
+\hline
+Attach an edge to a graph node
+& {\em drag-edge}: Drag the edge's start or end handle to the node.
+\\
 
-We scoped our language design in two ways to suit its role in educational
-scenarios. First, we focus on demonstrations of an algorithm's trace on a
-concrete example rather than its behavior on any arbitrary input. Instructors
-often first explain an algorithm by diagramming its behavior on a specific
-example rather than by writing pseudocode on the board and illustrating its
-general behavior on some abstract representation. Our language focuses on this
-common scenario, allowing the user to set up an example data structure and trace
-the algorithm by directly manipulating data on the canvas.
+\hline
+Mark a list element or tree/graph node (e.g. as sorted or visited) &
+{\em fill}: Select the ``Fill" tool, and click on the element. \\
+\hline
+\end{tabular}
+\end{table}
 
-Second, our language focuses on supporting algorithm traces for lists, binary
-trees, and graphs, because their canonical algorithms -- sorting, rotation,
-search and shortest paths -- are widely taught in introductory CS and algorithms
-classes. These data structures and their associated algorithms are also
-inherently visual: The natural way to teach and think through them is by drawing
-diagrams. Thus, we envision direct manipulation languages for describing
-computation to be most useful for these types of problems.
-%
-%Also, they represent around \todo{50\%} of the algorithms covered in
-%CLRS~\cite{Cormen2001}, one of the most popular algorithms textbooks. 
-%
-In \sec{sec:design-and-future-work}, we discuss how our language can be
-extended to support demonstrations of an algorithm's general behavior
-across more kinds of data structures.
+CodeInk's DM gesture set (summarized in Table \ref{tbl:language_table}) enables
+users to trace algorithms by manipulating numbers, lists, binary trees and
+graphs. From our exercise in watching lecture videos of an introductory
+algorithms class, we compiled a list of program behaviors that need to be
+expressed when tracing commonly taught sorting and search algorithms (left
+column). We then devised a gesture, in keeping with principles of direct
+manipulation~\cite{Shneiderman1982, Lee2012}, that would enable the user to
+express each behavior using a physical action; for example, numbers can be
+copied by grabbing them and dragging away, and they can be inserted into lists
+by dragging them into gaps between other elements.
 
-\begin{figure} %[!b]
+All data structures in CodeInk's visual vocabulary are composed of one or more
+objects (list elements or nodes), each with numeric values. For that reason, the
+gesture set is both compact (7 in total) and expressive: dragging one object
+into another compares their numeric values, regardless of whether they are
+numbers, list elements, nodes or some mixture thereof. Similarly, popping a list
+element or detaching a subtree from its parent is accomplished by grabbing it
+and holding it (\emph{dwelling}) until it can be moved away freely. We will
+explain the design decision of introducing dwelling later.
 
-\begin{center}
-\includegraphics[width=0.8\columnwidth]{img/visual-vocabulary.png}
-\end{center}
+% The gesture set is best explained through examples, which we provide below.
 
-\caption{CodeInk's visual vocabulary. The green arrows (for illustration only)
-show how numbers, lists, binary tree nodes, graph nodes, edges and fingers are
-visually represented in CodeInk.}
+\subsection{Worked Example: Insertion Sort}
+Tracing insertion sort's execution on an example list is usually performed by
+storyboarding its behavior, redrawing the list in several new configurations
+(\fig{fig:6006-insertion}). In CodeInk, the algorithm can be traced as follows:
 
-\label{fig:visual_vocab}
-\end{figure}
-
-\subsection{CodeInk's visual vocabulary}
-
-CodeInk's visual vocabulary (\fig{fig:visual_vocab}) is modeled after our
-observations of instructors explaining data structures and algorithms in
-introductory programming and algorithms courses at our university. For example, in those courses a
-binary tree node is represented visually as a circle with a number as its key
-value and two arrows as its left and right pointers; CodeInk mirrors this visual
-representation. The vocabulary currently supports numeric
-values, which is sufficient for many algorithms. We plan to add support for
-strings in the future.
-
-We have also implemented a special construct called a \emph{finger}, which
-points to any on-screen visual object. This can express the current point in a
-traversal algorithm, like a \emph{curr} pointer. In an educational setting, the
-finger replaces the instructor pointing to a particular object during lecture.
-
-\subsection{CodeInk's direct manipulation language}
-
-Our direct manipulation language enables users to perform gestures on live data
-structures to trace an algorithm's behavior. Almost every user interaction
-has some programmatic interpretation in Python.
-% In contrast, when drawing and redrawing diagrams on blackboards or PowerPoint,
-% objects either cannot be manipulated, or can be dragged around but without any
-% programmatic interpretation.
-To design this language, we attended live lectures at our university and
-also watched lecture videos from MIT's
-free introductory CS and algorithms courses on edX that featured worked examples of
-lists, trees, and graphs. We asked three questions:
-
-\begin{itemize}
-
-  \item What behaviors need to be expressed to explain each algorithm's
-  trace on the example data structure?
-
-  \item How do instructors currently express those behaviors by drawing
-  on the blackboard?
-
-  \item What direct manipulation gestures would be most natural to
-  express those behaviors?
-
-\end{itemize}
-
-We devised a compact set of eight gestures (\tab{tbl:language_table})
-that cover common algorithms on lists, trees, and graphs.
-
-%We now explain the gestures by demonstrating how a user would explain
-%insertion sort on a list, an AVL insertion on a binary tree, and
-%Dijkstra's algorithm on a graph.
-
-
-\begin{figure}
-
-\begin{center}
-\includegraphics[width=0.7\columnwidth]{img/6006/insertion.png}
-\end{center}
-
-\caption{An instructor of MIT's introductory algorithms class draws
-blackboard diagrams to explain insertion sort on an example of a list.}
-\label{fig:6006-insertion}
-\end{figure}
-
-
-\noindent \textbf{List algorithms}:
-List sorting and searching are fundamental topics in algorithms courses. Describing insertion
-sort, for instance, requires the user to express the following behaviors:
-creating a list, maintaining a pointer to the current list position, comparing
-numeric values, and swapping elements. Instructors typically describe these
-behaviors on the blackboard by redrawing the list in new configurations, with
-arrows showing transitions between states (\fig{fig:6006-insertion}).
-Here is how to demonstrate insertion sort in CodeInk:
-
-\noindent 1) Drag an example list onto the canvas and type in a list of numbers
-to initialize its values. Indicate the current list position by dropping a
-finger onto the second element (green arrows indicate drag motion and
+\noindent 1) Drag an example list onto the canvas and type in a comma-separated
+set of numbers to initialize its values (green arrows indicate drag motion and
 are not part of the CodeInk UI).
 
 \vspace{-0.25em}
@@ -133,8 +95,8 @@ feedback on how long they have dwelled.
 \vspace{0.4em}
 
 \noindent 3) After one second has elapsed (blue circle filled entirely), the
-list expands outward, creating gaps into which the dragged element can be
-inserted. The ``2" element is ready to be moved.
+list expands outward, creating gaps into which the element can be inserted. The
+``2" element is ready to be moved.
 
 \vspace{-0.25em}
 \noindent \includegraphics[width=0.7\columnwidth]{img/examples/insertion-3.png}
@@ -159,42 +121,19 @@ to create a list insertion step in the trace. The list collapses again in its ne
 
 \noindent \includegraphics[width=0.7\columnwidth]{img/examples/insertion-6.png}
 
-The user explains the rest of insertion sort by moving the finger down the list
-and inserting the current element into the sorted sublist until the entire list
-is sorted. If any mistakes are made, the user can undo steps to remove them
-from the trace. The steps can be played back and also shared online.
-Many list sorting and searching algorithms can be explained using this subset of CodeInk's direct
-manipulation language: creating lists, using fingers to indicate traversal
-points, and dragging list elements to show comparisons and rearrangements.
+The user explains the rest of insertion sort by moving down the list and
+inserting elements into the sorted sublist until the entire list is sorted. If
+any mistakes are made, the user can \emph{undo} steps to remove them from the
+trace. Many list sorting and searching algorithms can be explained using this
+subset of CodeInk's direct manipulation language: creating lists and dragging
+elements to show comparisons and rearrangements.
 
-
-%\begin{figure}[!h]
-%\caption{An instructor in MIT's introductory algorithms class explains
-%the insertion of several values into an AVL.}
-%\label{fig:6006-bst}
-%\end{figure}
-
-\begin{figure}
-
-\begin{center}
-\includegraphics[width=0.7\columnwidth]{img/6006/bst.png}
-\end{center}
-
-\caption{An instructor demonstrating AVL (balanced binary search) tree
-inserts.}
-
-\label{fig:example-bst}
-\end{figure}
-
-
-\noindent \textbf{Binary tree algorithms}:
-Common tree algorithms, such as an AVL (balanced binary search tree) insertion,
-require creating binary tree nodes, comparing node values, recursing into a
-node's left or right child, inserting nodes, and rotating subtrees. Instructors
-sometimes visualize a tree traversal pattern by drawing a line along the
-appropriate pointer and zig-zagging down the tree (see \fig{fig:example-bst}). They illustrate tree rotations by completely redrawing
-the tree in a new configuration, which is tedious and error-prone. Here is how
-to trace a series of AVL tree insertions in CodeInk:
+\subsection{Example: AVL Insertion}
+Tracing an AVL (balanced binary search tree) insertion can be a tedious and
+error-prone process, because rotations have to be shown by redrawing the
+entire tree in a new configuration. CodeInk's gesture set affords users the
+ability to rearrange nodes in the tree by detaching, dragging and reattaching
+them.
 
 \noindent \begin{tabular}{m{4.6cm} m{3.4cm}}
 
@@ -264,18 +203,7 @@ As is the case with lists, dragging one value into another triggers a
 numeric comparison (step 2), and grabbing and dwelling on a child object
 removes it from its parent data structure (step 5).
 
-\begin{figure}
-\begin{center}
-\includegraphics[width=0.7\columnwidth]{img/6006/dijkstra.png}
-\end{center}
-
-\caption{An instructor demonstrating Dijkstra's algorithm on the
-blackboard.}
-
-\label{fig:example-dijkstra}
-\end{figure}
-
-
+\begin{comment}
 \noindent \textbf{Graph algorithms}: Our language also covers graph
 traversal, such as search or finding shortest paths (see
 \fig{fig:example-dijkstra}). It supports creating and attaching graph
@@ -337,76 +265,7 @@ selecting ``Fill" and clicking on that node.
 %Because the drag-into gesture has multiple interpretations
 %(comparison, assignment, addition assignment), the user can dwell
 %to cycle through all interpretations (see \sec{sec:overloaded-gestures}).
-
-\noindent \textbf{Unified DM language}:
-Table \ref{tbl:language_table} summarizes CodeInk's direct manipulation language.
-While the preceding examples appear different, our
-language's gesture set generalizes across the primitive behaviors in each
-algorithm. For example, the user can copy a numeric value using the drag-away
-gesture, regardless of whether the value is a list element or tree/graph node.
-Similarly, comparing two values is always explained by the drag-into gesture,
-regardless of whether the values are both node values, list elements or some
-heterogeneous pair. This expressivity means the language can be used to describe
-a variety of list, tree and graph algorithms (see
-\sec{sec:design-and-future-work}).
-
-We turn next to two subtle language design decisions: chaining of gestures and
-resolving overloaded gestures.
-
-\begin{table}[!t]
-\vspace{-2em}
-% % increase table row spacing, adjust to taste
-\renewcommand{\arraystretch}{1.75}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
-% \setlength{\extrarowheight}{10pt}
-\caption{CodeInk's Direct Manipulation Language}
-\label{tbl:language_table}
-\centering
-% % Some packages, such as MDW tools, offer better commands for making tables %
-% than the plain LaTeX2e tabular which is used here.
-\begin{tabular}{|p{3.8cm} |p{3.8cm} |}
-\hline
-\textbf{Program Behavior} & \textbf{DM Gesture} \\
-\hline
-%Access a value & Grab value and drag elsewhere \\
-%\hline
-Copy a value & {\em drag-away}: Grab an object, and drag it away quickly.
-Drop it on the canvas to create a new number with the same value.
-\\
-\hline
-Remove a list element, or detach a tree/graph node from its parents &
-{\em dwell-drag-away}: Grab an object, dwell for one second, then
-drag it elsewhere.
-\\
-\hline
-Compare two values & {\em drag-into}: Drag one value into another.
-\\
-\hline
-Assign one object's value to another &
-{\em drag-into-dwell}: Drag one value into another, and
-dwell until the desired interpretation (\texttt{=, +=, -=}) appears. \\
-\hline
-Insert a value into a list, or a node into a tree/graph
-& {\em drag-insert}: Drag the value into a gap in the list, or the node to the
-tip of an edge
-\\
-
-\hline
-Attach an edge to a graph node
-& {\em drag-edge}: Drag the edge's start or end handle to the node.
-\\
-
-\hline
-Mark a list element or tree/graph node (e.g. as sorted or visited) &
-{\em fill}: Select the ``Fill" tool, and click on the element. \\
-\hline
-Indicate the current traversal point & {\em drag-finger}: Drag the finger to a
-list element or tree/graph node.
-\\
-\hline
-\end{tabular}
-\end{table}
+\end{comment}
 
 \subsection{Chaining and traversal patterns}
 The user can chain multiple gestures while dragging an object. One common

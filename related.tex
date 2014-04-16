@@ -1,30 +1,20 @@
 \section{Related Work}
 
-Our work is related to research in code-driven visualization tools, algorithm
-visualization, visual programming languages, and direct manipulation user
-interfaces.
-
-Code-driven visualization tools enable the user to enter a small program,
-single-step through its execution, and see the state of the program at each
-step. These tools are powerful for understanding code, but are not ideal for
-understanding an algorithm's high-level behavior, since the visualizations occur
-at a low level of abstraction: the executed steps are language and
-implementation-specific, and the program state is visualized using stack frames
-and pointers. CodeInk operates at a higher level of abstraction through its
-visual vocabulary of data structures, while its focus on tracing, rather than
-visualization, results in a more active learning process.
+Code-driven visualization tools~\cite{Guo2013, Sorva2013} enable users to enter
+code that implements an algorithm, and watch a step-by-step animation of its
+execution. While these tools are powerful for understanding code snippets, they
+are not ideal for understanding an algorithm's high-level behavior because the
+input code must be language-specific. On the other hand, algorithm
+visualizations~\cite{AlgoViz} are custom-built animations that operate at the
+right level of abstraction, but they must be hand-coded for a particular
+algorithm. CodeInk offers an alternative, low-effort method of authoring
+visualizations, and also enables students to play the role of the computer and
+carry out the algorithm's behavior. Relative to the passive nature of watching
+visualizations, tracing is an example of active learning, which has been shown
+to result in better learning outcomes~\cite{Sorva2012Diss}.
 
 % Sorva et al.\ provide a comprehensive survey of 44 such tools
 % for languages such as Java, C++, and Python~\cite{Sorva2013}.
-
-Algorithm visualizations are custom-built animations of an algorithm's behavior
-through which viewers can step backward and forward. The animations are
-typically hand-coded using GUI libraries, meaning they are at the ideal level of
-abstraction for explaining algorithms (diagrams of data structures, fewer
-low-level steps), but are tedious and difficult to author.
-CodeInk lowers the barrier to creating algorithm visualizations (no code needs
-to be written), while enabling students to learn by both watching and
-tracing.
 
 %To enable teachers to find and integrate suitable
 %visualizations into their curriculula, Shaffer et al.\ created the AlgoViz
@@ -35,19 +25,18 @@ tracing.
 % few used them in practice due to the difficulty of finding and integrating
 % suitable visualizations into their curriculum~\cite{Shaffer2011}.
 
-Visual programming languages enable programmers to write programs using
-graphical elements rather than by typing text. These languages have gained
-widespread adoption in two main areas:
-(1) domain-specific languages for specialists, such as LabVIEW for electronic
-systems designers and Max/MSP for digital music creators, and (2) educational
-programming environments such as Alice~\cite{Alice2008} and
+Visual programming languages enable programmers to write programs by directly
+manipulating graphical elements rather than by typing text. These languages have
+gained widespread adoption in two main areas:
+(1) domain-specific languages for specialists (e.g. LabVIEW, Max/MSP),
+% such as LabVIEW for electronic systems designers and Max/MSP for digital music
+% creators
+and (2) educational programming environments such as Alice~\cite{Alice2008} and
 Scratch~\cite{Scratch2008}, which allow novices to create simple programs by
-snapping together colorful blocks. CodeInk's DM gesture set is a type of visual
-language that focuses on traces of algorithms, rather than general
-programs.
-% Furthermore, CodeInk's DM language enables descriptions of an algorithm's
-% trace, and is not yet a general qprogramming language.
+snapping together colorful blocks. CodeInk offers a new visual language that
+enables users to trace algorithms by manipulating data structures.
 
+\begin{comment}
 Direct manipulation (DM) user interfaces~\cite{Hutchins1985}, starting with
 Shneiderman's initial definiton of the term~\cite{Shneiderman1982}, have long
 been recognized to promote more satisfactory reactions among users than
@@ -57,6 +46,7 @@ these princples in mind: algorithm steps can be described using physical actions
 between onscreen objects and the abstract data structures they represent. For
 example, list elements can be rearranged by grabbing elements and moving them
 into new positions, rather than by writing code or using menus.
+\end{comment}
 
 % DM environments for programming by
 %demonstration~\cite{Cypher1993} enable users to construct programs by
