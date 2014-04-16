@@ -131,6 +131,10 @@ Tracing an AVL (balanced binary search tree) insertion on paper can be tedious
 and error-prone, because rotations have to be shown by redrawing the entire tree
 in a new configuration. CodeInk's gesture set affords users the ability to
 rearrange nodes in the tree by detaching, dragging and reattaching them.
+As is the case with lists, dragging one value into another triggers a numeric
+comparison (step 2), and grabbing and dwelling removes a child from its parent
+(step 5).
+
 
 \noindent \begin{tabular}{m{4.6cm} m{3.4cm}}
 
@@ -195,10 +199,6 @@ binary1}
 
 & \includegraphics[width=3.4cm]{img/examples/bst-7.png}
 \end{tabular}
-
-As is the case with lists, dragging one value into another triggers a
-numeric comparison (step 2), and grabbing and dwelling on a child object
-removes it from its parent data structure (step 5).
 
 \begin{comment}
 \noindent \textbf{Graph algorithms}: Our gesture set also covers graph

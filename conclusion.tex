@@ -1,26 +1,17 @@
 \section{Conclusion}
 
-This paper presents the design of a novel direct manipulation (DM)
-language for describing algorithm traces on visualized data structures,
-and CodeInk, a prototype algorithm animation tool that implements this
-language. Our language provides a mapping from DM gestures to primitive
-program behaviors that occur in list, binary tree, and graph algorithms
-commonly taught in CS courses. Using CodeInk, teachers and students can
-explain an algorithm's behavior through worked examples by setting up
-and directly manipulating an example data structure to trace the
-algorithm's behavior. Every interaction is recorded as a step of Python
-code, which the user can select to jump to that point in the trace.
-%
-This trace can be used in the classroom or disseminated online. Students
-can step through it to learn the algorithm and solidify their
-understanding by tracing the algorithm on new input data.
-
-In a study that evaluated CodeInk's usability on students and teaching
-assistants from introductory CS classes at our university, subjects found CodeInk
-easier to use and more helpful than a traditional drawing tool for
-explaining sorting algorithms.
-
-We plan to extend the coverage of our direct manipulation language to
-more data structures and algorithms in CS education. We are also
-prototyping gestures for flow control as a step toward building a full
-environment for programming by direct manipulation.
+This paper presents the design of \emph{CodeInk}, a Web-based environment for
+tracing algorithms by direct manipulation (DM) of data structures. Its DM
+gesture set enables users to transform lists, trees and graphs rather than
+having to tediously draw storyboards of an algorithm's behavior on blackboards
+or paper. The user-described trace is recorded as interactive program steps, in
+Python or explanatory English, which enable navigation through the trace and can
+be shared and used as a basis for targeted feedback. In a study that evaluated
+CodeInk's viability as a tool in CS education, we found that students were able
+to learn as effectively from a CodeInk-produced explanation as from standard
+lecture videos, and that they could use CodeInk to trace the learned algorithm
+on new example data structures. We plan to extend the coverage of CodeInk's
+vocabulary to more data structures and algorithms. We are also prototyping
+gestures for flow control as a step toward an environment for
+describing general programs, not just concrete traces, by direct
+manipulation.
