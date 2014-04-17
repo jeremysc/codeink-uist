@@ -1,28 +1,25 @@
 \section{Limitations and Future Work}
 \label{sec:design-and-future-work}
 
-CodeInk's DM language supports traces of sorting and search algorithms
-across lists, binary trees, and graphs. These algorithms comprise
-roughly one third of the algorithms in CLRS~\cite{Cormen2001}:
+CodeInk supports tracing sorting and search algorithms
+across lists, binary trees, and graphs, covering  one third of the algorithms in CLRS~\cite{Cormen2001}:
 comparison sorts, operations on binary search and red-black trees,
 breadth-first and depth-first graph traversal and some shortest path
-algorithms. To provide completeness for the educational domain, we plan
-to extend CodeInk's vocabulary to support additional data structures
+algorithms. We plan
+to extend its vocabulary to include additional data structures
 (strings, linked lists, hash tables, and 2D arrays), as well as compound
-data structures (e.g., lists of nodes). Doing so would enable tracing a
+structures (e.g., lists of nodes). Doing so would enable tracing a
 broader class of algorithms (e.g., dynamic programming, matrix
 operations) and algorithms on compound data structures (e.g., a queue of
 nodes in a breadth-first traversal).
 
-Finally, there is a distinction between tracing algorithms and
-describing general programs. CodeInk's current focus is on the former,
-which is well-suited for teaching algorithms via concrete traces.
-However, it is essential for students to build an understanding of
-control abstraction: iteration sequences, branching conditions, and
-recursion. We plan to extend CodeInk's vocabulary to include gestures
-for specifying flow control. We are now prototyping gestures for
-describing iteration by tapping objects and controlling the loop's
-execution by dragging a slider between those objects. Our vision is to
-bring CodeInk beyond algorithm traces to bridge the gap from concrete
-examples to abstract program behavior.
+While we have thus far enabled tracing algorithms on concrete
+examples, CodeInk also needs to be able to handle control abstractions
+(e.g., iteration, branching recursion). Our future efforts will work
+to extend CodeInk to include gestures for specifying flow control. We
+are, for example, prototyping gestures for describing iteration by
+tapping objects and controlling the loop's execution by dragging a
+slider between those objects. Our vision is to bring CodeInk beyond
+algorithm traces to bridge the gap from concrete examples to abstract
+program behavior.
 

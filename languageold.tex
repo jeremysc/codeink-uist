@@ -1,5 +1,57 @@
 % Included in tool.tex
-\subsection{Direct Manipulation Gesture Set}
+\subsection{Direct Manipulation  Gesture Set}
+
+\begin{table}[!b]
+% % increase table row spacing, adjust to taste
+\renewcommand{\arraystretch}{1.75}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+% \setlength{\extrarowheight}{10pt}
+\centering
+% % Some packages, such as MDW tools, offer better commands for making tables %
+% than the plain LaTeX2e tabular which is used here.
+\begin{tabular}{|p{3.8cm} |p{3.8cm} |}
+\hline
+\textbf{Algorithm Behavior} & \textbf{DM Gesture} \\
+\hline
+%Access a value & Grab value and drag elsewhere \\
+%\hline
+Use or copy an object's value & {\em drag-away}: Grab an object, and drag it
+away quickly.
+Drop it on the stage to create a new number with the same value.
+\\
+\hline
+Remove an object from its parent (e.g. element from list, node from tree/graph) & {\em dwell-drag-away}: Grab an object, dwell for one second, then
+drag it elsewhere.
+\\
+\hline
+Compare two objects' values & {\em drag-into}: Drag one value into another.
+\\
+\hline
+Assign one object's value to another &
+{\em drag-into-dwell}: Drag one value into another, and
+dwell until the desired interpretation (\texttt{=, +=, -=}) appears. \\
+\hline
+Insert a value into a list, or a node into a tree/graph
+& {\em drag-insert}: Drag the value into a gap in the list, or the node to the
+tip of an edge
+\\
+
+\hline
+Attach an edge to a graph node
+& {\em drag-edge}: Drag the edge's start or end handle to the node.
+\\
+
+\hline
+Mark a list element or tree/graph node (e.g. as sorted or visited) &
+{\em fill}: Select the ``Fill" tool, and click on the element. \\
+\hline
+\end{tabular}
+
+\caption{CodeInk's Direct Manipulation (DM) Gesture Set}
+\label{tbl:gesture_table}
+
+\end{table}
 
 CodeInk's DM gesture set (summarized in \tab{tbl:gesture_table} and explored in detail in ~\cite{Scott2014}) enables
 tracing algorithms by manipulating numbers, lists, binary trees and
@@ -15,7 +67,7 @@ expressive: dragging one object into another compares their numeric
 values, regardless of whether they are numbers, list elements, nodes or
 some mixture thereof. Similarly, popping a list element or detaching a
 subtree from its parent is accomplished by grabbing and holding 
-(\emph{dwelling}) until it can be moved away freely. Two examples will help to illustrate
+(\emph{dwelling}) until it can be moved away freely. Two examples help to illustrate
 the gesture set: insertion sort and AVL insertion.
 
 \noindent \textbf{Insertion Sort}: Insertion sort is typically illustrated by redrawing a concrete example in successive
@@ -69,61 +121,9 @@ the list collapses into its new, rearranged state (with the
 
 The rest of insertion sort is traced by moving the finger down the
 list and inserting elements into the sorted sublist until the entire
-list is sorted. If any mistakes occur, the user can undo steps to
+list is sorted. If any mistakes are occur, the user can undo steps to
 remove them from the trace.
 
-\begin{table}[!t]
-\vspace{-1cm}
-% % increase table row spacing, adjust to taste
-\renewcommand{\arraystretch}{1.75}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
-% \setlength{\extrarowheight}{10pt}
-\centering
-% % Some packages, such as MDW tools, offer better commands for making tables %
-% than the plain LaTeX2e tabular which is used here.
-\begin{tabular}{|p{3.8cm} |p{3.8cm} |}
-\hline
-\textbf{Algorithm Behavior} & \textbf{DM Gesture} \\
-\hline
-%Access a value & Grab value and drag elsewhere \\
-%\hline
-Use or copy an object's value & {\em drag-away}: Grab an object, and drag it
-away quickly.
-Drop it on the stage to create a new number with the same value.
-\\
-\hline
-Remove an object from its parent (e.g. element from list, node from tree/graph) & {\em dwell-drag-away}: Grab an object, dwell for one second, then
-drag it elsewhere.
-\\
-\hline
-Compare two objects' values & {\em drag-into}: Drag one value into another.
-\\
-\hline
-Assign one object's value to another &
-{\em drag-into-dwell}: Drag one value into another, and
-dwell until the desired interpretation (\texttt{=, +=, -=}) appears. \\
-\hline
-Insert a value into a list, or a node into a tree/graph
-& {\em drag-insert}: Drag the value into a gap in the list, or the node to the
-tip of an edge
-\\
-
-\hline
-Attach an edge to a graph node
-& {\em drag-edge}: Drag the edge's start or end handle to the node.
-\\
-
-\hline
-Mark a list element or tree/graph node (e.g. as sorted or visited) &
-{\em fill}: Select the ``Fill" tool, and click on the element. \\
-\hline
-\end{tabular}
-
-\caption{CodeInk's Direct Manipulation (DM) Gesture Set}
-\label{tbl:gesture_table}
-
-\end{table}
 
 \noindent \textbf{AVL Insertion}: Drawing a balanced binary search
 tree insertion can be tedious and error-prone, because rotations
@@ -285,11 +285,7 @@ gesture.
 \subsection{Resolving overloaded gestures}
 \label{sec:overloaded-gestures}
 
-A DM gesture can be overloaded, i.e., have more than one behavior
-associated with it. Drag-into, for example can indicate either a
-comparison or an assignment. In keeping with its overall spirit,
-CodeInk resolves the ambiguity gesturally (i.e., depending on dwell),
-an issue we have explored in more detail in \cite{Scott2014}.
+A DM gesture can be overloaded, i.e., have more than one behavior associated with it. Drag-into, for example can indicate either a comparison or an assignment. In keeping with its overall spirit, CodeInk resolves the ambiguity gesturally (i.e., depending on dwell), an issue we explore this in more detail in \cite{Scott2014}.
 
 
 

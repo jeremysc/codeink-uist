@@ -13,21 +13,50 @@ on a concrete example of a list by drawing storyboard snapshots.}
 \end{figure}
 
 
-Because CodeInk targets instructors and students, its design is correspondingly inspired 
-by  the actions of instructors in the classroom and  best practices
+CodeInk's design is inspired 
+by  the actions of instructors and by best practices
 identified in educational psychology.
 
-\noindent \textbf{Concrete traces}:
-We observed that instructors often explain algorithms by drawing concrete examples, and then tracing algorithm behavior on those
-examples (\fig{fig:6006-insertion}). With a \emph{concrete trace}, the instructor does not
-explain the algorithm in the general case or graphically draw flow control.
-Instead, they unfold the loops and branches of an algorithm's pseudocode
-into a linear sequence of steps.
+One such practice~\cite{Lister2004} found that a student's ability to trace code is a
+prerequisite for being adept at problem solving and writing code, suggesting that CS courses should ``first teach systematic tracing as a base
+skill, then allow students to build [\ldots]\ upon that''.
+% found that students in introductory programming courses could not
+% consistently demonstrate an understanding of code by manually tracing
+% it. The researchers noted that ``even when our principal aim is to
+% teach students to write code, we require students to learn by reading
+% code''
+
+We also noted that instructors often start explaining algorithms by
+tracing code on concrete examples (\fig{fig:6006-insertion}), rather
+than explaining the algorithm in the general case or drawing flow
+control.  Instead, they unfold the loops and branches of an
+algorithm's pseudocode into a linear sequence of steps.
+%%% POSSIBLY PUT BACK IN THE TEXT COMMENTED OUT BELOW?
+%%%
 % This approach is in line with findings that students need to see multiple
 % examples of an algorithm's behavior to build their
 % understanding~\cite{Vainio2007}.
-CodeInk correspondingly targets the task of tracing algorithms through concrete examples, rather
-than explaining them in the abstract.
+
+In response to both of these observations, CodeInk targets the task of
+tracing algorithms behavior on concrete examples, enabling students to
+practice tracing examples in an engaging, interactive environment.
+The student has the freedom to explore an algorithm's behavior,
+perhaps making mistakes along the way.  CodeInk records every action
+the student makes, providing a basis for targeted
+feedback~\cite{Balzer1989} on both the final answer and the process by
+which the student reached their answer.
+
+We further noted that algorithm explanations typically occur at a high
+level of abstraction, using pseudocode and diagrams rather than
+language-specific code. This abstracts away language-specific details,
+a lesson incorporated in CodeInk's goal of enabling the illustration of
+algorithm behavior by direct manipulation of data structure diagrams.
+
+Finally, CodeInk uses the visual vocabulary common to programmers, e.g., 
+lists drawn as a row of boxes (\fig{fig:6006-insertion}), trees and graphs
+drawn as circles connected by arrows. Values are drawn as a number
+within or adjacent to each object (Figure 3).\footnote{All examples in our system so far
+use numerical data.}
 
 %Also, according to cognitive load theory, novices can learn better by watching
 %experts solve problems that would be too difficult for novices to solve on
@@ -36,15 +65,6 @@ than explaining them in the abstract.
 %an opportunity to get the gist of an algorithm, before they attempt to trace it
 %on their own. 
 
-\noindent \textbf{Level of abstraction}: The instructor's explanation
-occurs at a high level of abstraction. They rarely write
-language-specific code on the board and will instead
-opt for a combination of pseudocode and data structure diagrams. Their
-drawings abstract away language-specific details that are not essential
-to understanding the essence of the algorithm. We designed CodeInk to
-operate at this same level of abstraction, illustrating algorithm behavior by direct manipulation of data structure diagrams.
-% This should not be confused with the previous point: the traced steps
-% are concrete, and do not include control abstraction (e.g. loops).
 
 
 \begin{figure}
@@ -63,15 +83,6 @@ nodes, graph nodes, edges) and visual fingers onto the stage.}
 \label{fig:visual_vocab}
 \end{figure}
 
-\noindent \textbf{Visual vocabulary}: When drawing data structures,
-instructors use a familiar, consistent visual vocabulary. Lists are
-drawn as a row of boxes (\fig{fig:6006-insertion}), trees and graphs
-are drawn as circles connected by arrows. Values are drawn as a number
-within or adjacent to each object. 
-%%% probably put the parenthetical in a footnote
-(All examples in our system so far
-use numerical data.) CodeInk's visual vocabulary
-(\fig{fig:visual_vocab}) mirrors these conventions.
 
 \begin{comment}
 Instructors add to this vocabulary using arrows and colors. Arrows are
@@ -85,21 +96,6 @@ they are filled with a different color. CodeInk's visual vocabulary includes
 gesture (explained later) that can be used to color a data structure.
 \end{comment}
 
-\noindent \textbf{Student-produced traces}: Lister et
-al.~\cite{Lister2004} found that a student's ability to trace code is a
-prerequisite for being adept at problem solving and writing code, suggesting that CS courses should ``first teach systematic tracing as a base
-skill, then allow students to build [\ldots]\ upon that''.
-% found that students in introductory programming courses could not
-% consistently demonstrate an understanding of code by manually tracing
-% it. The researchers noted that ``even when our principal aim is to
-% teach students to write code, we require students to learn by reading
-% code''
-In addition to being an authoring tool for instructors, CodeInk enables
-students to practice tracing algorithms on examples. The
-student has the freedom to explore an algorithm's behavior (perhaps
-making mistakes along the way). CodeInk records every action the student makes, allowing an instructor to provide targeted
-feedback~\cite{Balzer1989} on both the final answer {\em and} the process by which
-the student reached their answer.
 
 % Show your work
 
